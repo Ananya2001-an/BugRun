@@ -3,21 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <title>Collect The API</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
       body {
         margin: 0;
-        background-color: black;
+        padding: 0;
+        background-color: beige;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         height: 100vh;
+        font-family: 'Press Start 2P';
+        font-size: 20px;
       }
       ::-webkit-scrollbar{
         display: none;
       }
+      a{
+        color: burlywood;
+        text-decoration: none;
+        margin-left: 15px;
+      }
+      li{
+        margin-top: 20px;
+        display: flex;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+      i{
+        color: rgb(203, 19, 19);
+      }
+
+      .apps{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
     </style>
   <link rel="shortcut icon" href="favicon.ico"></head>
   <body>
       <canvas></canvas>
+      <div class="apps">
+      <h5 style="color: burlywood;">Apps opened : 0</h5>
+       <ul style="color: burlywood;list-style: none;">
+        <li><i id="1" class="fa fa-close"></i><a href="">Ytb</a></li>
+        <li><i id="2" class="fa fa-close"></i><a href="">Deso</a></li>
+        <li><i id="3" class="fa fa-close"></i><a href="">Coil</a></li>
+        <li><i id="4" class="fa fa-close"></i><a href="">Music</a></li>
+        <li><i id="5" class="fa fa-close"></i><a href="">CockroachDB</a></li>
+       </ul>
+       <h4 class="result"></h4>
+      </div>
   <script src="./js/canvas.bundle.js"></script></body>
 </html>
