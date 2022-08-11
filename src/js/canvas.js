@@ -364,3 +364,52 @@ addEventListener('keyup', ({ keyCode })=>{
        }
    }
 })
+
+let finalScore = 0
+
+let videoShuffle = [{channel:'UCcIXc5mJsHVYTZR1maL5l9w',points:10}
+,{channel:'UC8butISFwT-Wl7EV0hUK0BQ', points:20}
+,{channel:'UCZ2nKwA5u9zhtF9LfCjXJ9g', points:250}
+,{channel:'UCTCOnxnWsjYiFByBqTJbLOw', points:100}
+,{channel:'UC6pGDc4bFGD1_36IKv3FnYg', points:300}
+,{channel:'UCV0qA-eDDICsRR9rPcnG7tw', points:56}
+,{channel:'UCh3Rpsdv1fxefE0ZcKBaNcQ', points:600}
+,{channel:'UC84whx2xxsiA1gXHXXqKGOA', points:346}
+,{channel:'UC-lHJZR3Gqxm24_Vd_AJ5Yw', points:5}
+,{channel:'UCHnyfMqiRRG1u-2MsSQLbXA', points:90}
+,{channel:'UCLA_DiR1FfKNvjuUpBHmylQ', points:1000}
+,{channel:'UCQ9XXjX0eNReH28Ass8E-hw', points:378}
+,{channel:'UCFbNIlppjAuEX4znoulh0Cw', points:800}
+,{channel:'UCP0_k4INXrwPS6HhIyYqsTg', points:78}
+,{channel:'UCWcrr8Q9INGNp-PTCLTzc8Q', points:289}
+,{channel:'UCnjyiWHGEyww-p8QYSftx2A', points:608}
+,{channel:'UCaO6VoaYJv4kS-TQO_M-N_g', points:900}
+,{channel:'UCk9aeo2A6a1fg3VeRueTn9w', points:45}
+,{channel:'UCC7c1-WxuXI1eUuKwtXpWLg', points:8}
+,{channel:'UCq3Ci-h945sbEYXpVlw7rJg', points:203}
+,{channel:'UC_mzz_JnzArhhpGUy8KdGwg', points:91}
+]
+
+function video(){
+    let randomNumber = Math.floor(Math.random()*videoShuffle.length)
+    finalScore += videoShuffle[randomNumber].points
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${videoShuffle[randomNumber].channel}&maxResults=1&order=viewCount&key=AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU`)
+      .then((result)=>{
+        return result.json()
+        }).then((data)=>{
+            console.log(data)
+            let videos = data.items
+            let videoContainer = document.querySelector('.video-container')
+            for(video of videos)
+            {	
+                videoContainer.innerHTML += `
+                <a href="https://www.youtube.com/watch?v=${video.id.videoId}"><img src='${video.snippet.thumbnails.default.url}' /></a>
+                `
+            }
+        })
+}
+
+video()
+
+let score = document.querySelector('.result')
+score.textContent = `Current score is : ${finalScore}`

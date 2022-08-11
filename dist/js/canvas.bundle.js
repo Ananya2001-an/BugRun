@@ -207,6 +207,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_SpriteRunLeft_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../imgs/SpriteRunLeft.png */ "./src/imgs/SpriteRunLeft.png");
 /* harmony import */ var _imgs_SpriteStandRight_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../imgs/SpriteStandRight.png */ "./src/imgs/SpriteStandRight.png");
 /* harmony import */ var _imgs_SpriteStandLeft_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../imgs/SpriteStandLeft.png */ "./src/imgs/SpriteStandLeft.png");
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -694,6 +700,101 @@ addEventListener('keyup', function (_ref4) {
       }
   }
 });
+var finalScore = 0;
+var videoShuffle = [{
+  channel: 'UCcIXc5mJsHVYTZR1maL5l9w',
+  points: 10
+}, {
+  channel: 'UC8butISFwT-Wl7EV0hUK0BQ',
+  points: 20
+}, {
+  channel: 'UCZ2nKwA5u9zhtF9LfCjXJ9g',
+  points: 250
+}, {
+  channel: 'UCTCOnxnWsjYiFByBqTJbLOw',
+  points: 100
+}, {
+  channel: 'UC6pGDc4bFGD1_36IKv3FnYg',
+  points: 300
+}, {
+  channel: 'UCV0qA-eDDICsRR9rPcnG7tw',
+  points: 56
+}, {
+  channel: 'UCh3Rpsdv1fxefE0ZcKBaNcQ',
+  points: 600
+}, {
+  channel: 'UC84whx2xxsiA1gXHXXqKGOA',
+  points: 346
+}, {
+  channel: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw',
+  points: 5
+}, {
+  channel: 'UCHnyfMqiRRG1u-2MsSQLbXA',
+  points: 90
+}, {
+  channel: 'UCLA_DiR1FfKNvjuUpBHmylQ',
+  points: 1000
+}, {
+  channel: 'UCQ9XXjX0eNReH28Ass8E-hw',
+  points: 378
+}, {
+  channel: 'UCFbNIlppjAuEX4znoulh0Cw',
+  points: 800
+}, {
+  channel: 'UCP0_k4INXrwPS6HhIyYqsTg',
+  points: 78
+}, {
+  channel: 'UCWcrr8Q9INGNp-PTCLTzc8Q',
+  points: 289
+}, {
+  channel: 'UCnjyiWHGEyww-p8QYSftx2A',
+  points: 608
+}, {
+  channel: 'UCaO6VoaYJv4kS-TQO_M-N_g',
+  points: 900
+}, {
+  channel: 'UCk9aeo2A6a1fg3VeRueTn9w',
+  points: 45
+}, {
+  channel: 'UCC7c1-WxuXI1eUuKwtXpWLg',
+  points: 8
+}, {
+  channel: 'UCq3Ci-h945sbEYXpVlw7rJg',
+  points: 203
+}, {
+  channel: 'UC_mzz_JnzArhhpGUy8KdGwg',
+  points: 91
+}];
+
+function video() {
+  var randomNumber = Math.floor(Math.random() * videoShuffle.length);
+  finalScore += videoShuffle[randomNumber].points;
+  fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=".concat(videoShuffle[randomNumber].channel, "&maxResults=1&order=viewCount&key=AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU")).then(function (result) {
+    return result.json();
+  }).then(function (data) {
+    console.log(data);
+    var videos = data.items;
+    var videoContainer = document.querySelector('.video-container');
+
+    var _iterator = _createForOfIteratorHelper(videos),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        video = _step.value;
+        videoContainer.innerHTML += "\n                <a href=\"https://www.youtube.com/watch?v=".concat(video.id.videoId, "\"><img src='").concat(video.snippet.thumbnails["default"].url, "' /></a>\n                ");
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  });
+}
+
+video();
+var score = document.querySelector('.result');
+score.textContent = "Current score is : ".concat(finalScore);
 
 /***/ })
 
