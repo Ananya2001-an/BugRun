@@ -86,6 +86,32 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/imgs/BugLeft.png":
+/*!******************************!*\
+  !*** ./src/imgs/BugLeft.png ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "588e538ee07a475317349e8ee1410d7e.png");
+
+/***/ }),
+
+/***/ "./src/imgs/BugRight.png":
+/*!*******************************!*\
+  !*** ./src/imgs/BugRight.png ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "8ec34bd593bbc3bec41b2c1f6ce7ac33.png");
+
+/***/ }),
+
 /***/ "./src/imgs/SpriteRunLeft.png":
 /*!************************************!*\
   !*** ./src/imgs/SpriteRunLeft.png ***!
@@ -135,6 +161,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "a136f3932e2944449b960bf7c87adb7e.png");
+
+/***/ }),
+
+/***/ "./src/imgs/YoutubeApi.png":
+/*!*********************************!*\
+  !*** ./src/imgs/YoutubeApi.png ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "405353f569fd13592b989497e9cf5464.png");
 
 /***/ }),
 
@@ -207,17 +246,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_SpriteRunLeft_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../imgs/SpriteRunLeft.png */ "./src/imgs/SpriteRunLeft.png");
 /* harmony import */ var _imgs_SpriteStandRight_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../imgs/SpriteStandRight.png */ "./src/imgs/SpriteStandRight.png");
 /* harmony import */ var _imgs_SpriteStandLeft_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../imgs/SpriteStandLeft.png */ "./src/imgs/SpriteStandLeft.png");
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
+/* harmony import */ var _imgs_BugRight_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../imgs/BugRight.png */ "./src/imgs/BugRight.png");
+/* harmony import */ var _imgs_BugLeft_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../imgs/BugLeft.png */ "./src/imgs/BugLeft.png");
+/* harmony import */ var _imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../imgs/YoutubeApi.png */ "./src/imgs/YoutubeApi.png");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
 
 
 
@@ -342,6 +381,98 @@ var GenericObjects = /*#__PURE__*/function () {
   }]);
 
   return GenericObjects;
+}();
+
+var Api = /*#__PURE__*/function () {
+  function Api(_ref3) {
+    var x = _ref3.x,
+        y = _ref3.y,
+        image = _ref3.image;
+
+    _classCallCheck(this, Api);
+
+    this.position = {
+      x: x,
+      y: y
+    }, this.image = image, this.width = 50, this.height = 50;
+    this.frames = 0;
+    this.frameDirection = 'right';
+  }
+
+  _createClass(Api, [{
+    key: "draw",
+    value: function draw() {
+      c.drawImage(this.image, 240 * this.frames, 0, 240, 200, this.position.x, this.position.y, this.width, this.height);
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      if (this.frames < 7 && this.frameDirection == 'right') this.frames++;else if (this.frames >= 7) this.frameDirection = 'left';
+      if (this.frames > 1 && this.frameDirection == 'left') this.frames--;else if (this.frames <= 1) this.frameDirection = 'right';
+      this.draw();
+    }
+  }]);
+
+  return Api;
+}();
+
+var Bug = /*#__PURE__*/function () {
+  function Bug(_ref4) {
+    var x = _ref4.x,
+        y = _ref4.y,
+        speed = _ref4.speed,
+        distance = _ref4.distance,
+        direction = _ref4.direction;
+
+    _classCallCheck(this, Bug);
+
+    this.position = {
+      x: x,
+      y: y
+    };
+    this.width = 70, this.height = 50;
+    this.speed = speed;
+    this.distance = distance;
+    this.covered = 0;
+    this.sprites = {
+      right: createImage(_imgs_BugRight_png__WEBPACK_IMPORTED_MODULE_8__["default"]),
+      left: createImage(_imgs_BugLeft_png__WEBPACK_IMPORTED_MODULE_9__["default"])
+    };
+
+    if (direction == 'right') {
+      this.currentSprite = this.sprites.right;
+    } else {
+      this.currentSprite = this.sprites.left;
+    }
+  }
+
+  _createClass(Bug, [{
+    key: "draw",
+    value: function draw() {
+      c.drawImage(this.currentSprite, 0, 0, 110, 80, this.position.x, this.position.y, this.width, this.height);
+    }
+  }, {
+    key: "move",
+    value: function move() {
+      this.draw();
+
+      if (this.covered < this.distance && this.currentSprite == this.sprites.right) {
+        this.position.x += this.speed;
+        this.covered += this.speed;
+      } else if (this.covered >= this.distance && this.currentSprite == this.sprites.right) {
+        this.currentSprite = this.sprites.left;
+        this.covered = 0;
+      } else if (this.covered < this.distance && this.currentSprite == this.sprites.left) {
+        this.position.x -= this.speed;
+        this.covered += this.speed;
+      } else if (this.covered >= this.distance && this.currentSprite == this.sprites.left) {
+        this.currentSprite = this.sprites.right;
+        this.covered = 0;
+      }
+    }
+  }]);
+
+  return Bug;
 }(); //create HTML image object 
 
 
@@ -358,8 +489,11 @@ var platformImage = createImage(_imgs_platform_png__WEBPACK_IMPORTED_MODULE_0__[
 var platformSmallTallImage = createImage(_imgs_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var bgImage = createImage(_imgs_bg_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var objectImage = createImage(_imgs_objects_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var ytbImage = createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
 var platforms = [];
 var genericObjects = [];
+var apis = [];
+var bugs = [];
 var lastKey;
 var keys = {
   right: {
@@ -378,6 +512,7 @@ function init() {
   platformSmallTallImage = createImage(_imgs_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
   bgImage = createImage(_imgs_bg_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
   objectImage = createImage(_imgs_objects_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  ytbImage = createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
   platforms = [new Platform({
     x: 0,
     y: 487,
@@ -512,6 +647,48 @@ function init() {
     y: 180,
     image: objectImage
   })];
+  apis = [new Api({
+    x: 7 * platformImage.width + 200,
+    y: 100,
+    image: ytbImage
+  }), new Api({
+    x: 15 * platformImage.width + 1200 + 200,
+    y: 150,
+    image: ytbImage
+  }), new Api({
+    x: 19 * platformImage.width + 1400 + 200,
+    y: 150,
+    image: ytbImage
+  }), new Api({
+    x: 9 * platformImage.width + 200 + 200,
+    y: 100,
+    image: ytbImage
+  })];
+  bugs = [new Bug({
+    x: 3 * platformImage.width,
+    y: 437,
+    speed: 5,
+    distance: 2 * platformImage.width - 70,
+    direction: 'left'
+  }), new Bug({
+    x: 7 * platformImage.width,
+    y: 150,
+    speed: 2,
+    distance: platformImage.width - 70,
+    direction: 'right'
+  }), new Bug({
+    x: 8 * platformImage.width + 200,
+    y: 437,
+    speed: 3,
+    distance: platformImage.width - 70,
+    direction: 'right'
+  }), new Bug({
+    x: 10 * platformImage.width + 200,
+    y: 437,
+    speed: 4,
+    distance: 2 * platformImage.width - 70,
+    direction: 'left'
+  })];
 }
 
 function animate() {
@@ -523,6 +700,19 @@ function animate() {
   });
   platforms.forEach(function (platform) {
     platform.draw();
+  });
+  apis.forEach(function (api) {
+    api.update();
+  }); // for(let bug of bugs)
+  // {
+  //    if( player.position.x + player.width == bug.position.x)
+  //     {
+  //         init()
+  //     }
+  // }
+
+  bugs.forEach(function (bug) {
+    bug.move();
   });
   player.update();
 
@@ -542,6 +732,12 @@ function animate() {
         genericObjects.forEach(function (obj) {
           obj.position.x -= player.speed * 0.66; //parallax effect
         });
+        apis.forEach(function (api) {
+          api.position.x -= player.speed;
+        });
+        bugs.forEach(function (bug) {
+          bug.position.x -= player.speed;
+        });
       } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
       platforms.forEach(function (platform) {
@@ -549,6 +745,12 @@ function animate() {
       });
       genericObjects.forEach(function (obj) {
         obj.position.x += player.speed * 0.66; //parallax effect
+      });
+      apis.forEach(function (api) {
+        api.position.x += player.speed;
+      });
+      bugs.forEach(function (bug) {
+        bug.position.x += player.speed;
       });
     }
   } //sprite switching
@@ -592,8 +794,8 @@ function animate() {
 
 init();
 animate();
-addEventListener('keydown', function (_ref3) {
-  var keyCode = _ref3.keyCode;
+addEventListener('keydown', function (_ref5) {
+  var keyCode = _ref5.keyCode;
 
   switch (keyCode) {
     case 65:
@@ -663,8 +865,8 @@ addEventListener('keydown', function (_ref3) {
       }
   }
 });
-addEventListener('keyup', function (_ref4) {
-  var keyCode = _ref4.keyCode;
+addEventListener('keyup', function (_ref6) {
+  var keyCode = _ref6.keyCode;
 
   switch (keyCode) {
     case 65:
@@ -701,100 +903,40 @@ addEventListener('keyup', function (_ref4) {
   }
 });
 var finalScore = 0;
-var videoShuffle = [{
-  channel: 'UCcIXc5mJsHVYTZR1maL5l9w',
-  points: 10
-}, {
-  channel: 'UC8butISFwT-Wl7EV0hUK0BQ',
-  points: 20
-}, {
-  channel: 'UCZ2nKwA5u9zhtF9LfCjXJ9g',
-  points: 250
-}, {
-  channel: 'UCTCOnxnWsjYiFByBqTJbLOw',
-  points: 100
-}, {
-  channel: 'UC6pGDc4bFGD1_36IKv3FnYg',
-  points: 300
-}, {
-  channel: 'UCV0qA-eDDICsRR9rPcnG7tw',
-  points: 56
-}, {
-  channel: 'UCh3Rpsdv1fxefE0ZcKBaNcQ',
-  points: 600
-}, {
-  channel: 'UC84whx2xxsiA1gXHXXqKGOA',
-  points: 346
-}, {
-  channel: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw',
-  points: 5
-}, {
-  channel: 'UCHnyfMqiRRG1u-2MsSQLbXA',
-  points: 90
-}, {
-  channel: 'UCLA_DiR1FfKNvjuUpBHmylQ',
-  points: 1000
-}, {
-  channel: 'UCQ9XXjX0eNReH28Ass8E-hw',
-  points: 378
-}, {
-  channel: 'UCFbNIlppjAuEX4znoulh0Cw',
-  points: 800
-}, {
-  channel: 'UCP0_k4INXrwPS6HhIyYqsTg',
-  points: 78
-}, {
-  channel: 'UCWcrr8Q9INGNp-PTCLTzc8Q',
-  points: 289
-}, {
-  channel: 'UCnjyiWHGEyww-p8QYSftx2A',
-  points: 608
-}, {
-  channel: 'UCaO6VoaYJv4kS-TQO_M-N_g',
-  points: 900
-}, {
-  channel: 'UCk9aeo2A6a1fg3VeRueTn9w',
-  points: 45
-}, {
-  channel: 'UCC7c1-WxuXI1eUuKwtXpWLg',
-  points: 8
-}, {
-  channel: 'UCq3Ci-h945sbEYXpVlw7rJg',
-  points: 203
-}, {
-  channel: 'UC_mzz_JnzArhhpGUy8KdGwg',
-  points: 91
-}];
 
 function video() {
-  var randomNumber = Math.floor(Math.random() * videoShuffle.length);
-  finalScore += videoShuffle[randomNumber].points;
-  fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=".concat(videoShuffle[randomNumber].channel, "&maxResults=1&order=viewCount&key=AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU")).then(function (result) {
-    return result.json();
-  }).then(function (data) {
-    console.log(data);
-    var videos = data.items;
-    var videoContainer = document.querySelector('.video-container');
-
-    var _iterator = _createForOfIteratorHelper(videos),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        video = _step.value;
-        videoContainer.innerHTML += "\n                <a href=\"https://www.youtube.com/watch?v=".concat(video.id.videoId, "\"><img src='").concat(video.snippet.thumbnails["default"].url, "' /></a>\n                ");
+  var videoContainer = document.querySelector('.api-check');
+  var apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU';
+  videoContainer.innerHTML = '';
+  videoContainer.innerHTML = '<input type="text" \
+    required placeholder="Search Video"> \
+    <button>Check</button>';
+  var btn = document.getElementsByTagName('button')[0];
+  btn.addEventListener('click', function () {
+    var searchQuery = document.getElementsByTagName('input')[0].value;
+    fetch("https://www.googleapis.com/youtube/v3/search?key=".concat(apiKey, "&type=video&part=snippet&q=").concat(searchQuery)).then(function (result) {
+      if (result.ok) {
+        videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;">Youtube API worked successfully!!</h5>\
+                <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
+        finalScore += 100;
+        return result.json();
+      } else {
+        console.log('Unsuccessful api call');
       }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
+    }).then(function (data) {
+      console.log(data);
+      var videos = data.items;
+
+      for (var i = 0; i < 3; i++) {
+        videoContainer.innerHTML += "<p style=\"text-align:center;font-size:13px;font-weight:bold;\">".concat(videos[i].snippet.title, "</p>");
+      }
+    });
   });
 }
 
 video();
 var score = document.querySelector('.result');
-score.textContent = "Current score is : ".concat(finalScore);
+score.innerHTML = "<p style=\"line-height:2;\">Current score <br> is: ".concat(finalScore, "</p>");
 
 /***/ })
 

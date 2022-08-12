@@ -6,6 +6,9 @@ import runRight from '../imgs/SpriteRunRight.png'
 import runLeft from '../imgs/SpriteRunLeft.png'
 import standRight from '../imgs/SpriteStandRight.png'
 import standLeft from '../imgs/SpriteStandLeft.png'
+import bugRight from '../imgs/BugRight.png'
+import bugLeft from '../imgs/BugLeft.png'
+import ytb from '../imgs/YoutubeApi.png'
 
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
@@ -114,6 +117,105 @@ class GenericObjects{
     }
 }
 
+class Api{
+    constructor({x,y,image}){
+        this.position = {
+            x,
+            y
+        },
+        
+        this.image = image,
+        this.width = 50,
+        this.height = 50
+
+        this.frames = 0
+        this.frameDirection = 'right'
+    }
+
+    draw(){
+        c.drawImage(this.image
+        ,240 * this.frames
+        ,0
+        ,240,
+        200
+        , this.position.x
+        , this.position.y
+        ,this.width,
+        this.height
+        )
+    }
+    update(){
+        if(this.frames < 7 && this.frameDirection == 'right') this.frames ++
+        else if(this.frames >= 7) this.frameDirection = 'left'
+        if(this.frames > 1 && this.frameDirection == 'left') this.frames --
+        else if (this.frames <= 1) this.frameDirection = 'right'
+        this.draw()
+    }
+}
+
+class Bug{
+    constructor({x, y, speed, distance, direction}){
+        this.position={
+            x,
+            y
+        }
+        this.width = 70,
+        this.height = 50
+
+        this.speed = speed
+        this.distance = distance
+        this.covered = 0
+    
+        this.sprites = {
+            right: createImage(bugRight),
+            left: createImage(bugLeft)
+        }
+
+        if(direction == 'right')
+        {
+            this.currentSprite = this.sprites.right
+        }
+        else{
+            this.currentSprite = this.sprites.left
+        }
+    }
+    draw(){
+        c.drawImage(
+        this.currentSprite
+        ,0
+        ,0
+        ,110
+        ,80
+        ,this.position.x
+        ,this.position.y
+        ,this.width
+        ,this.height)
+    }
+
+    move(){
+        this.draw()
+        if(this.covered < this.distance  && this.currentSprite == this.sprites.right){
+            this.position.x += this.speed
+            this.covered += this.speed
+        }
+        else if (this.covered >= this.distance && this.currentSprite == this.sprites.right)
+        {
+            this.currentSprite = this.sprites.left
+            this.covered = 0
+        }
+        else if(this.covered < this.distance  && this.currentSprite == this.sprites.left)
+        {
+            this.position.x -= this.speed
+            this.covered += this.speed
+        }
+        else if (this.covered >= this.distance && this.currentSprite == this.sprites.left)
+        {
+            this.currentSprite = this.sprites.right
+            this.covered = 0
+        }
+        
+    }
+}
 
 
 //create HTML image object 
@@ -130,9 +232,12 @@ let platformImage = createImage(platform)
 let platformSmallTallImage = createImage(platformSmallTall)
 let bgImage = createImage(bg)
 let objectImage = createImage(objects)
+let ytbImage = createImage(ytb)
 
 let platforms = []
 let genericObjects  = []
+let apis = []
+let bugs = []
 let lastKey
 
 const keys = {
@@ -152,6 +257,7 @@ function init(){
     platformSmallTallImage = createImage(platformSmallTall)
     bgImage = createImage(bg)
     objectImage = createImage(objects)
+    ytbImage = createImage(ytb)
 
     platforms = [new Platform({x:0,y:487, image:platformImage})
     ,new Platform({x:platformImage.width, y:487, image:platformImage})
@@ -188,6 +294,15 @@ function init(){
     ,new GenericObjects({x:0, y:180, image:objectImage})
     ,new GenericObjects({x:6*platformImage.width + 50, y:180, image:objectImage})]
 
+    apis = [new Api({x:7*platformImage.width + 200, y:100, image:ytbImage})
+    ,new Api({x:15*platformImage.width + 1200 + 200, y:150, image:ytbImage})
+    ,new Api({x:19*platformImage.width + 1400 + 200, y:150, image:ytbImage})
+    ,new Api({x:9*platformImage.width + 200 + 200,y:100, image:ytbImage})]
+
+    bugs = [new Bug({x:3*platformImage.width, y:437, speed:5, distance:2*platformImage.width-70, direction:'left'})
+    ,new Bug({x:7*platformImage.width, y:150, speed:2, distance:platformImage.width-70, direction:'right'})
+    ,new Bug({x:8*platformImage.width + 200, y:437, speed:3, distance:platformImage.width-70, direction:'right'})
+    ,new Bug({x:10*platformImage.width + 200, y:437, speed:4, distance:2*platformImage.width-70, direction:'left'})]
 }
 
 function animate(){
@@ -202,7 +317,25 @@ function animate(){
     platforms.forEach(platform =>{
         platform.draw()
     })
+
+    apis.forEach(api =>{
+        api.update()
+    })
+
+    // for(let bug of bugs)
+    // {
+    //    if( player.position.x + player.width == bug.position.x)
+    //     {
+    //         init()
+    //     }
+    // }
+
+    bugs.forEach(bug =>{
+        bug.move()
+    })
+
     player.update()
+
     if(keys.right.pressed && player.position.x < 400)
     {
         player.velocity.x = player.speed
@@ -223,6 +356,12 @@ function animate(){
             genericObjects.forEach(obj =>{
                 obj.position.x -= player.speed * 0.66 //parallax effect
             })
+            apis.forEach(api =>{
+                api.position.x -= player.speed
+            })
+            bugs.forEach(bug =>{
+                bug.position.x -= player.speed
+            })
         }
         else if(keys.left.pressed && scrollOffset > 0)
         {
@@ -232,6 +371,12 @@ function animate(){
             })
             genericObjects.forEach(obj =>{
                 obj.position.x += player.speed * 0.66 //parallax effect
+            })
+            apis.forEach(api =>{
+                api.position.x += player.speed
+            })
+            bugs.forEach(bug =>{
+                bug.position.x += player.speed
             })
         }
     }
@@ -285,8 +430,6 @@ function animate(){
                 player.velocity.y = 0
             }
     })
-
-
 }
 
 init()
@@ -367,49 +510,44 @@ addEventListener('keyup', ({ keyCode })=>{
 
 let finalScore = 0
 
-let videoShuffle = [{channel:'UCcIXc5mJsHVYTZR1maL5l9w',points:10}
-,{channel:'UC8butISFwT-Wl7EV0hUK0BQ', points:20}
-,{channel:'UCZ2nKwA5u9zhtF9LfCjXJ9g', points:250}
-,{channel:'UCTCOnxnWsjYiFByBqTJbLOw', points:100}
-,{channel:'UC6pGDc4bFGD1_36IKv3FnYg', points:300}
-,{channel:'UCV0qA-eDDICsRR9rPcnG7tw', points:56}
-,{channel:'UCh3Rpsdv1fxefE0ZcKBaNcQ', points:600}
-,{channel:'UC84whx2xxsiA1gXHXXqKGOA', points:346}
-,{channel:'UC-lHJZR3Gqxm24_Vd_AJ5Yw', points:5}
-,{channel:'UCHnyfMqiRRG1u-2MsSQLbXA', points:90}
-,{channel:'UCLA_DiR1FfKNvjuUpBHmylQ', points:1000}
-,{channel:'UCQ9XXjX0eNReH28Ass8E-hw', points:378}
-,{channel:'UCFbNIlppjAuEX4znoulh0Cw', points:800}
-,{channel:'UCP0_k4INXrwPS6HhIyYqsTg', points:78}
-,{channel:'UCWcrr8Q9INGNp-PTCLTzc8Q', points:289}
-,{channel:'UCnjyiWHGEyww-p8QYSftx2A', points:608}
-,{channel:'UCaO6VoaYJv4kS-TQO_M-N_g', points:900}
-,{channel:'UCk9aeo2A6a1fg3VeRueTn9w', points:45}
-,{channel:'UCC7c1-WxuXI1eUuKwtXpWLg', points:8}
-,{channel:'UCq3Ci-h945sbEYXpVlw7rJg', points:203}
-,{channel:'UC_mzz_JnzArhhpGUy8KdGwg', points:91}
-]
-
 function video(){
-    let randomNumber = Math.floor(Math.random()*videoShuffle.length)
-    finalScore += videoShuffle[randomNumber].points
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${videoShuffle[randomNumber].channel}&maxResults=1&order=viewCount&key=AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU`)
-      .then((result)=>{
-        return result.json()
-        }).then((data)=>{
-            console.log(data)
-            let videos = data.items
-            let videoContainer = document.querySelector('.video-container')
-            for(video of videos)
-            {	
-                videoContainer.innerHTML += `
-                <a href="https://www.youtube.com/watch?v=${video.id.videoId}"><img src='${video.snippet.thumbnails.default.url}' /></a>
-                `
+    let videoContainer = document.querySelector('.api-check')
+    let apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU'
+    videoContainer.innerHTML = ''
+    videoContainer.innerHTML = '<input type="text" \
+    required placeholder="Search Video"> \
+    <button>Check</button>'
+    
+    let btn = document.getElementsByTagName('button')[0]
+    btn.addEventListener('click', ()=>{
+        let searchQuery = document.getElementsByTagName('input')[0].value
+
+        fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`)
+        .then((result)=>{
+            if(result.ok){
+                videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;">Youtube API worked successfully!!</h5>\
+                <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>'
+                finalScore += 100
+                return result.json()
             }
-        })
+            else{
+                console.log('Unsuccessful api call')
+            }
+          }).then((data)=>{
+                console.log(data)
+                let videos = data.items
+                for(let i=0 ;i<3;i++)
+                {
+                    videoContainer.innerHTML += `<p style="text-align:center;font-size:13px;font-weight:bold;">${videos[i].snippet.title}</p>`
+                    
+                }
+                
+       
+          })
+    })
 }
 
 video()
 
 let score = document.querySelector('.result')
-score.textContent = `Current score is : ${finalScore}`
+score.innerHTML = `<p style="line-height:2;">Current score <br> is: ${finalScore}</p>`
