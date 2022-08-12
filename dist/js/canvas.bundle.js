@@ -265,7 +265,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
+ //create HTML image object 
 
+function createImage(imageSrc) {
+  var image = new Image();
+  image.src = imageSrc;
+  return image;
+}
+
+var skip_btns = document.querySelectorAll('.skip');
+var points_btn = document.querySelector('.points');
+var back_btn = document.querySelector('.back');
+skip_btns.forEach(function (skip_btn) {
+  skip_btn.addEventListener('click', function () {
+    if (document.querySelector('.tutorial-1').style.display != 'none') {
+      document.querySelector('.tutorial-1').style.display = 'none';
+    } else {
+      document.querySelector('.tutorial-2').style.display = 'none';
+    }
+
+    document.getElementsByClassName('api-check')[0].style.opacity = 1;
+    document.getElementsByClassName('result-class')[0].style.opacity = 1;
+    document.querySelector('canvas').style.opacity = 1;
+  });
+});
+points_btn.addEventListener('click', function () {
+  document.querySelector('.tutorial-1').style.display = 'none';
+  document.querySelector('.tutorial-2').style.display = 'block';
+});
+back_btn.addEventListener('click', function () {
+  document.querySelector('.tutorial-1').style.display = 'block';
+  document.querySelector('.tutorial-2').style.display = 'none';
+});
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 canvas.width = 1024;
@@ -473,14 +504,7 @@ var Bug = /*#__PURE__*/function () {
   }]);
 
   return Bug;
-}(); //create HTML image object 
-
-
-function createImage(imageSrc) {
-  var image = new Image();
-  image.src = imageSrc;
-  return image;
-}
+}();
 
 var scrollOffset = 0; //for finding the winning point
 
@@ -910,13 +934,13 @@ function video() {
   videoContainer.innerHTML = '';
   videoContainer.innerHTML = '<input type="text" \
     required placeholder="Search Video"> \
-    <button>Check</button>';
-  var btn = document.getElementsByTagName('button')[0];
+    <button class="check">Check</button>';
+  var btn = document.getElementsByClassName('check')[0];
   btn.addEventListener('click', function () {
     var searchQuery = document.getElementsByTagName('input')[0].value;
     fetch("https://www.googleapis.com/youtube/v3/search?key=".concat(apiKey, "&type=video&part=snippet&q=").concat(searchQuery)).then(function (result) {
       if (result.ok) {
-        videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;">Youtube API worked successfully!!</h5>\
+        videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
                 <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
         finalScore += 100;
         return result.json();

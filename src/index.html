@@ -17,6 +17,7 @@
         justify-content: space-evenly;
         height: 100vh;
         font-family: 'Press Start 2P';
+        position: relative;
 
       }
       ::-webkit-scrollbar{
@@ -30,6 +31,7 @@
         align-items: center;
         color: burlywood;
         max-width:220px;
+        opacity: 0.5;
       }
       a{
         color: burlywood;
@@ -78,12 +80,71 @@
 
       .result-class{
         border-top: 1px solid burlywood;
+        opacity: 0.5;
+      }
+      .tutorial-1, .tutorial-2{
+        position: absolute;
+        top: auto;
+        left: auto;
+        background-color: beige;
+        width: 700px;
+        height: 500px;
+        border: 2px solid burlywood;
+        color: burlywood;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .tutorial-2{
+        display: none;
+      }
+
+      .button-row{
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
+      }
+
+      .button-row button{
+        margin-top: 0;
       }
 
     </style>
   </head>
   <body>
-      <canvas></canvas>
+      <canvas style="opacity: 0.5;"></canvas>
+
+      <div class="tutorial-1">
+        <h2>Hi Coders !</h2>
+        <p style="line-height: 1.5;">You have a mission to accomplish today. In this game you
+          must collect all lost API's that were crucial for your next big coding project. 
+          But beware it's not easy! In your way you will encounter some 
+          annoying bugs that might send you back to the start point.<br>
+          Jump carefully cause death pits will also do the same.
+          But this is not it, there is another big issue that we need to look after.
+          Some API's look the same as a normal one but are not real. If you acquire a 
+          fake API then your score will reduce. And you will lose this game if your 
+          score goes below 500. So what are you waiting for, start running..!!  
+        </p>
+        <div class="button-row">
+          <button class="skip">Skip</button>
+          <button class="points">See points for each API</button>
+        </div>
+      </div>
+
+      <div class="tutorial-2">
+        <h2>API Points</h2>
+        <div style="display:grid;grid-template-columns:auto auto;text-align:center;">
+          <h4>API</h4><h4>Points</h4>
+          <h4>Youtube</h4><h4>100</h4>
+        </div>
+        <div class="button-row">
+          <button class="skip">Skip</button>
+          <button class="back">Back</button>
+        </div>
+      </div>
+
+
       <div style="display: flex;flex-direction: column;">
         
         <div class="api-check">

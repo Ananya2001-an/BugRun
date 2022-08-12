@@ -10,6 +10,42 @@ import bugRight from '../imgs/BugRight.png'
 import bugLeft from '../imgs/BugLeft.png'
 import ytb from '../imgs/YoutubeApi.png'
 
+//create HTML image object 
+function createImage(imageSrc){
+    const image = new Image()
+    image.src = imageSrc
+    return image
+}
+
+    let skip_btns = document.querySelectorAll('.skip')
+    let points_btn = document.querySelector('.points')
+    let back_btn = document.querySelector('.back')
+
+    skip_btns.forEach(skip_btn =>{
+        skip_btn.addEventListener('click', ()=>{
+            if(document.querySelector('.tutorial-1').style.display != 'none')
+            {
+                document.querySelector('.tutorial-1').style.display = 'none'
+            }
+            else{
+                document.querySelector('.tutorial-2').style.display = 'none'
+            }
+            document.getElementsByClassName('api-check')[0].style.opacity = 1
+            document.getElementsByClassName('result-class')[0].style.opacity = 1
+            document.querySelector('canvas').style.opacity = 1
+        })
+    })
+    
+    points_btn.addEventListener('click', ()=>{
+        document.querySelector('.tutorial-1').style.display = 'none'
+        document.querySelector('.tutorial-2').style.display = 'block'
+    })
+    back_btn.addEventListener('click', ()=>{
+        document.querySelector('.tutorial-1').style.display = 'block'
+        document.querySelector('.tutorial-2').style.display = 'none'
+    })
+
+
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
@@ -217,13 +253,6 @@ class Bug{
     }
 }
 
-
-//create HTML image object 
-function createImage(imageSrc){
-    const image = new Image()
-    image.src = imageSrc
-    return image
-}
 
 let scrollOffset = 0 //for finding the winning point
 let player = new Player()
@@ -516,16 +545,16 @@ function video(){
     videoContainer.innerHTML = ''
     videoContainer.innerHTML = '<input type="text" \
     required placeholder="Search Video"> \
-    <button>Check</button>'
+    <button class="check">Check</button>'
     
-    let btn = document.getElementsByTagName('button')[0]
+    let btn = document.getElementsByClassName('check')[0]
     btn.addEventListener('click', ()=>{
         let searchQuery = document.getElementsByTagName('input')[0].value
 
         fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`)
         .then((result)=>{
             if(result.ok){
-                videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;">Youtube API worked successfully!!</h5>\
+                videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
                 <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>'
                 finalScore += 100
                 return result.json()
