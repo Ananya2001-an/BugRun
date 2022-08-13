@@ -274,14 +274,18 @@ function createImage(imageSrc) {
 }
 
 var skip_btns = document.querySelectorAll('.skip');
-var points_btn = document.querySelector('.points');
-var back_btn = document.querySelector('.back');
+var next_btns = document.querySelectorAll('.next');
+var back_btns = document.querySelectorAll('.back');
 skip_btns.forEach(function (skip_btn) {
   skip_btn.addEventListener('click', function () {
     if (document.querySelector('.tutorial-1').style.display != 'none') {
       document.querySelector('.tutorial-1').style.display = 'none';
-    } else {
+    } else if (document.querySelector('.tutorial-2').style.display != 'none') {
       document.querySelector('.tutorial-2').style.display = 'none';
+    } else if (document.querySelector('.tutorial-3').style.display != 'none') {
+      document.querySelector('.tutorial-3').style.display = 'none';
+    } else {
+      document.querySelector('.tutorial-4').style.display = 'none';
     }
 
     document.getElementsByClassName('api-check')[0].style.opacity = 1;
@@ -289,19 +293,41 @@ skip_btns.forEach(function (skip_btn) {
     document.querySelector('canvas').style.opacity = 1;
   });
 });
-points_btn.addEventListener('click', function () {
-  document.querySelector('.tutorial-1').style.display = 'none';
-  document.querySelector('.tutorial-2').style.display = 'block';
+next_btns.forEach(function (next_btn) {
+  next_btn.addEventListener('click', function () {
+    if (document.querySelector('.tutorial-1').style.display != 'none') {
+      document.querySelector('.tutorial-1').style.display = 'none';
+      document.querySelector('.tutorial-2').style.display = 'block';
+    } else if (document.querySelector('.tutorial-2').style.display != 'none') {
+      document.querySelector('.tutorial-2').style.display = 'none';
+      document.querySelector('.tutorial-3').style.display = 'block';
+    } else {
+      document.querySelector('.tutorial-3').style.display = 'none';
+      document.querySelector('.tutorial-4').style.display = 'block';
+    }
+  });
 });
-back_btn.addEventListener('click', function () {
-  document.querySelector('.tutorial-1').style.display = 'block';
-  document.querySelector('.tutorial-2').style.display = 'none';
+back_btns.forEach(function (back_btn) {
+  back_btn.addEventListener('click', function () {
+    if (document.querySelector('.tutorial-2').style.display != 'none') {
+      document.querySelector('.tutorial-2').style.display = 'none';
+      document.querySelector('.tutorial-1').style.animation = 'none';
+      document.querySelector('.tutorial-1').style.display = 'block';
+    } else if (document.querySelector('.tutorial-3').style.display != 'none') {
+      document.querySelector('.tutorial-3').style.display = 'none';
+      document.querySelector('.tutorial-2').style.display = 'block';
+    } else {
+      document.querySelector('.tutorial-4').style.display = 'none';
+      document.querySelector('.tutorial-3').style.display = 'block';
+    }
+  });
 });
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 var gravity = 1.5;
+var finalScore = 0;
 
 var Player = /*#__PURE__*/function () {
   function Player() {
@@ -442,6 +468,39 @@ var Api = /*#__PURE__*/function () {
       if (this.frames > 1 && this.frameDirection == 'left') this.frames--;else if (this.frames <= 1) this.frameDirection = 'right';
       this.draw();
     }
+  }, {
+    key: "video",
+    value: function video() {
+      var videoContainer = document.querySelector('.api-check');
+      var apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU';
+      videoContainer.innerHTML = '';
+      videoContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the API to see if it\'s real or fake.</h5>\
+        <input type="text" \
+        required placeholder="Search Video"> \
+        <button class="check">Check</button>\
+        ';
+      var btn = document.getElementsByClassName('check')[0];
+      btn.addEventListener('click', function () {
+        var searchQuery = document.getElementsByTagName('input')[0].value;
+        fetch("https://www.googleapis.com/youtube/v3/search?key=".concat(apiKey, "&type=video&part=snippet&q=").concat(searchQuery)).then(function (result) {
+          if (result.ok) {
+            videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
+                    <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
+            finalScore += 100;
+            return result.json();
+          } else {
+            console.log('Unsuccessful api call');
+          }
+        }).then(function (data) {
+          console.log(data);
+          var videos = data.items;
+
+          for (var i = 0; i < 3; i++) {
+            videoContainer.innerHTML += "<p style=\"text-align:center;font-size:13px;font-weight:bold;\">".concat(videos[i].snippet.title, "</p>");
+          }
+        });
+      });
+    }
   }]);
 
   return Api;
@@ -532,6 +591,8 @@ function init() {
   scrollOffset = 0; //for finding the winning point
 
   player = new Player();
+  finalScore = 0;
+  document.querySelector('.api-check').innerHTML = '';
   platformImage = createImage(_imgs_platform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
   platformSmallTallImage = createImage(_imgs_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
   bgImage = createImage(_imgs_bg_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -687,6 +748,10 @@ function init() {
     x: 9 * platformImage.width + 200 + 200,
     y: 100,
     image: ytbImage
+  }), new Api({
+    x: 2 * platformImage.width + 200,
+    y: 200,
+    image: ytbImage
   })];
   bugs = [new Bug({
     x: 3 * platformImage.width,
@@ -727,14 +792,7 @@ function animate() {
   });
   apis.forEach(function (api) {
     api.update();
-  }); // for(let bug of bugs)
-  // {
-  //    if( player.position.x + player.width == bug.position.x)
-  //     {
-  //         init()
-  //     }
-  // }
-
+  });
   bugs.forEach(function (bug) {
     bug.move();
   });
@@ -813,7 +871,26 @@ function animate() {
     if (player.position.y + player.height <= platform.position.y && player.position.y + player.height + player.velocity.y >= platform.position.y && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x + platform.width) {
       player.velocity.y = 0;
     }
-  });
+  }); //api collision
+
+  for (var i = 0; i < apis.length; i++) {
+    if (player.position.y + player.velocity.y >= apis[i].position.y && player.position.y + player.velocity.y <= apis[i].position.y + apis[i].height && player.position.x + player.width >= apis[i].position.x && player.position.x <= apis[i].position.x + apis[i].width || player.position.y + player.height + player.velocity.y >= apis[i].position.y && player.position.y + player.velocity.y <= apis[i].position.y + apis[i].height && player.position.x + player.width >= apis[i].position.x && player.position.x <= apis[i].position.x + apis[i].width) {
+      apis[i].video();
+      apis.splice(i, 1);
+    }
+  } //bug collision
+
+
+  for (var _i = 0; _i < bugs.length; _i++) {
+    if (player.position.y + player.height <= bugs[_i].position.y && player.position.y + player.height + player.velocity.y >= bugs[_i].position.y && player.position.x + player.width >= bugs[_i].position.x && player.position.x <= bugs[_i].position.x + bugs[_i].width) {
+      bugs.splice(_i, 1); //kills bug
+    } // if(player.position.x + player.width == bugs[i].position.x
+    // || player.position.x  == bugs[i].position.x + bugs[i].width)
+    // {
+    //     init()
+    // }
+
+  }
 }
 
 init();
@@ -926,39 +1003,6 @@ addEventListener('keyup', function (_ref6) {
       }
   }
 });
-var finalScore = 0;
-
-function video() {
-  var videoContainer = document.querySelector('.api-check');
-  var apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU';
-  videoContainer.innerHTML = '';
-  videoContainer.innerHTML = '<input type="text" \
-    required placeholder="Search Video"> \
-    <button class="check">Check</button>';
-  var btn = document.getElementsByClassName('check')[0];
-  btn.addEventListener('click', function () {
-    var searchQuery = document.getElementsByTagName('input')[0].value;
-    fetch("https://www.googleapis.com/youtube/v3/search?key=".concat(apiKey, "&type=video&part=snippet&q=").concat(searchQuery)).then(function (result) {
-      if (result.ok) {
-        videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
-                <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
-        finalScore += 100;
-        return result.json();
-      } else {
-        console.log('Unsuccessful api call');
-      }
-    }).then(function (data) {
-      console.log(data);
-      var videos = data.items;
-
-      for (var i = 0; i < 3; i++) {
-        videoContainer.innerHTML += "<p style=\"text-align:center;font-size:13px;font-weight:bold;\">".concat(videos[i].snippet.title, "</p>");
-      }
-    });
-  });
-}
-
-video();
 var score = document.querySelector('.result');
 score.innerHTML = "<p style=\"line-height:2;\">Current score <br> is: ".concat(finalScore, "</p>");
 

@@ -82,7 +82,7 @@
         border-top: 1px solid burlywood;
         opacity: 0.5;
       }
-      .tutorial-1, .tutorial-2{
+      .tutorial-1, .tutorial-2,.tutorial-3, .tutorial-4{
         position: absolute;
         top: auto;
         left: auto;
@@ -92,21 +92,44 @@
         border: 2px solid burlywood;
         color: burlywood;
         text-align: center;
-        padding: 20px;
+        padding: 15px;
       }
 
-      .tutorial-2{
+      .tutorial-1{
+        animation: come-down 1s ease-in-out ;
+      }
+
+      @keyframes come-down {
+        0%{
+          transform: translateY(-700px);
+          opacity: 0.5;
+        }
+        100%{
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .tutorial-2,.tutorial-3, .tutorial-4{
         display: none;
       }
 
       .button-row{
+        
+        position: absolute;
+        bottom: 0;
         display: flex;
         justify-content: space-between;
-        bottom: 0;
       }
 
       .button-row button{
         margin-top: 0;
+      }
+
+      .counter{
+        height: 20px;
+        display: flex;
+        justify-content: flex-end;
       }
 
     </style>
@@ -115,32 +138,83 @@
       <canvas style="opacity: 0.5;"></canvas>
 
       <div class="tutorial-1">
-        <h2>Hi Coders !</h2>
-        <p style="line-height: 1.5;">You have a mission to accomplish today. In this game you
+        <div class="counter">
+          <h4>1/4</h4>
+        </div>
+        <h2>Hi Coder !</h2>
+        <p style="line-height: 1.5;font-size: 15px;">You have a mission to accomplish today. In this game you
           must collect all lost API's that were crucial for your next big coding project. 
           But beware it's not easy! In your way you will encounter some 
-          annoying bugs that might send you back to the start point.<br>
+          annoying bugs that might send you back to the start point.<br><br>
           Jump carefully cause death pits will also do the same.
           But this is not it, there is another big issue that we need to look after.
           Some API's look the same as a normal one but are not real. If you acquire a 
           fake API then your score will reduce. And you will lose this game if your 
-          score goes below 500. So what are you waiting for, start running..!!  
+          score goes below 500. So what are you waiting for, start running..!! 
         </p>
         <div class="button-row">
-          <button class="skip">Skip</button>
-          <button class="points">See points for each API</button>
+          <button class="skip">Skip Tutorial</button>
+          <div style="margin-left: 540px;">
+            <button class="next">Next</button>
+          </div>
         </div>
       </div>
 
       <div class="tutorial-2">
+        <div class="counter">
+          <h4>2/4</h4>
+        </div>
+        <h2>Player Movement</h2>
+        <p style="line-height: 1.5;font-size: 15px;">
+          Use up, down, left and right arrow keys or 
+          'a','s','w' and 'd' keys to control your player's movements.
+        </p>
+        <div class="button-row">
+          <button class="skip">Skip Tutorial</button>
+
+          <div style="margin-left: 470px;">
+            <button class="back">Back</button>
+            <button class="next">Next</button>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="tutorial-3">
+        <div class="counter">
+          <h4>3/4</h4>
+        </div>
+        <h2>Avoid Bugs and Death Pits</h2>
+        <p style="line-height: 1.5;font-size: 15px;">Use up or 'w' key to dodge bugs and death pits.
+          You can also kill bugs by jumping over them.
+          If you fall into a death pit or collide with a bug, you would
+          have to start again.
+        </p>
+        <div class="button-row">
+          <button class="skip">Skip Tutorial</button>
+
+          <div style="margin-left: 340px;">
+            <button class="back">Back</button>
+            <button class="next">See points for each API</button>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="tutorial-4">
+        <div class="counter">
+          <h4>4/4</h4>
+        </div>
         <h2>API Points</h2>
         <div style="display:grid;grid-template-columns:auto auto;text-align:center;">
           <h4>API</h4><h4>Points</h4>
           <h4>Youtube</h4><h4>100</h4>
         </div>
         <div class="button-row">
-          <button class="skip">Skip</button>
-          <button class="back">Back</button>
+          <button class="skip">Skip Tutorial</button>
+          <div style="margin-left: 540px;">
+            <button class="back">Back</button>
+          </div>
         </div>
       </div>
 

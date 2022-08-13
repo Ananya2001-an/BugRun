@@ -17,33 +17,77 @@ function createImage(imageSrc){
     return image
 }
 
-    let skip_btns = document.querySelectorAll('.skip')
-    let points_btn = document.querySelector('.points')
-    let back_btn = document.querySelector('.back')
+let skip_btns = document.querySelectorAll('.skip')
+let next_btns = document.querySelectorAll('.next')
+let back_btns = document.querySelectorAll('.back')
 
-    skip_btns.forEach(skip_btn =>{
-        skip_btn.addEventListener('click', ()=>{
-            if(document.querySelector('.tutorial-1').style.display != 'none')
-            {
-                document.querySelector('.tutorial-1').style.display = 'none'
-            }
-            else{
-                document.querySelector('.tutorial-2').style.display = 'none'
-            }
-            document.getElementsByClassName('api-check')[0].style.opacity = 1
-            document.getElementsByClassName('result-class')[0].style.opacity = 1
-            document.querySelector('canvas').style.opacity = 1
-        })
+skip_btns.forEach(skip_btn =>{
+    skip_btn.addEventListener('click', ()=>{
+        if(document.querySelector('.tutorial-1').style.display != 'none')
+        {
+            document.querySelector('.tutorial-1').style.display = 'none'
+        }
+        else if(document.querySelector('.tutorial-2').style.display != 'none'){
+            document.querySelector('.tutorial-2').style.display = 'none'
+        }
+        else if(document.querySelector('.tutorial-3').style.display != 'none'){
+            document.querySelector('.tutorial-3').style.display = 'none'
+        }
+        else{
+            document.querySelector('.tutorial-4').style.display = 'none'
+        }
+        document.getElementsByClassName('api-check')[0].style.opacity = 1
+        document.getElementsByClassName('result-class')[0].style.opacity = 1
+        document.querySelector('canvas').style.opacity = 1
     })
+})
     
-    points_btn.addEventListener('click', ()=>{
-        document.querySelector('.tutorial-1').style.display = 'none'
-        document.querySelector('.tutorial-2').style.display = 'block'
+next_btns.forEach(next_btn=>{
+    next_btn.addEventListener('click', ()=>{
+        if(document.querySelector('.tutorial-1').style.display != 'none')
+        {
+            document.querySelector('.tutorial-1').style.display = 'none'
+            document.querySelector('.tutorial-2').style.display = 'block'
+        }
+        
+        else if(document.querySelector('.tutorial-2').style.display != 'none')
+        {
+            document.querySelector('.tutorial-2').style.display = 'none'
+            document.querySelector('.tutorial-3').style.display = 'block'
+        }
+        else
+        {
+            document.querySelector('.tutorial-3').style.display = 'none'
+            document.querySelector('.tutorial-4').style.display = 'block'
+        }
+        
     })
+})
+
+back_btns.forEach(back_btn =>{
     back_btn.addEventListener('click', ()=>{
-        document.querySelector('.tutorial-1').style.display = 'block'
-        document.querySelector('.tutorial-2').style.display = 'none'
+        if(document.querySelector('.tutorial-2').style.display != 'none')
+        {
+            document.querySelector('.tutorial-2').style.display = 'none'
+            document.querySelector('.tutorial-1').style.animation = 'none'
+            document.querySelector('.tutorial-1').style.display = 'block'
+        }
+        else if(document.querySelector('.tutorial-3').style.display != 'none')
+        {
+            document.querySelector('.tutorial-3').style.display = 'none'
+            document.querySelector('.tutorial-2').style.display = 'block'
+        }
+
+        else 
+        {
+            document.querySelector('.tutorial-4').style.display = 'none'
+            document.querySelector('.tutorial-3').style.display = 'block'
+        }
+        
+        
+       
     })
+})
 
 
 const canvas = document.querySelector('canvas')
@@ -53,6 +97,7 @@ canvas.width = 1024
 canvas.height = 576
 
 const gravity = 1.5
+let finalScore = 0
 
 class Player{
     constructor(){
@@ -187,6 +232,45 @@ class Api{
         else if (this.frames <= 1) this.frameDirection = 'right'
         this.draw()
     }
+
+    video(){
+        let videoContainer = document.querySelector('.api-check')
+        let apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU'
+        videoContainer.innerHTML = ''
+        videoContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the API to see if it\'s real or fake.</h5>\
+        <input type="text" \
+        required placeholder="Search Video"> \
+        <button class="check">Check</button>\
+        '
+        
+        let btn = document.getElementsByClassName('check')[0]
+        btn.addEventListener('click', ()=>{
+            let searchQuery = document.getElementsByTagName('input')[0].value
+    
+            fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`)
+            .then((result)=>{
+                if(result.ok){
+                    videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
+                    <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>'
+                    finalScore += 100
+                    return result.json()
+                }
+                else{
+                    console.log('Unsuccessful api call')
+                }
+              }).then((data)=>{
+                    console.log(data)
+                    let videos = data.items
+                    for(let i=0 ;i<3;i++)
+                    {
+                        videoContainer.innerHTML += `<p style="text-align:center;font-size:13px;font-weight:bold;">${videos[i].snippet.title}</p>`
+                        
+                    }
+                    
+           
+              })
+        })
+    }
 }
 
 class Bug{
@@ -281,6 +365,8 @@ const keys = {
 function init(){
     scrollOffset = 0 //for finding the winning point
     player = new Player()
+    finalScore = 0
+    document.querySelector('.api-check').innerHTML = ''
 
     platformImage = createImage(platform)
     platformSmallTallImage = createImage(platformSmallTall)
@@ -326,7 +412,8 @@ function init(){
     apis = [new Api({x:7*platformImage.width + 200, y:100, image:ytbImage})
     ,new Api({x:15*platformImage.width + 1200 + 200, y:150, image:ytbImage})
     ,new Api({x:19*platformImage.width + 1400 + 200, y:150, image:ytbImage})
-    ,new Api({x:9*platformImage.width + 200 + 200,y:100, image:ytbImage})]
+    ,new Api({x:9*platformImage.width + 200 + 200,y:100, image:ytbImage})
+    ,new Api({x:2*platformImage.width + 200,y:200, image:ytbImage})]
 
     bugs = [new Bug({x:3*platformImage.width, y:437, speed:5, distance:2*platformImage.width-70, direction:'left'})
     ,new Bug({x:7*platformImage.width, y:150, speed:2, distance:platformImage.width-70, direction:'right'})
@@ -350,14 +437,6 @@ function animate(){
     apis.forEach(api =>{
         api.update()
     })
-
-    // for(let bug of bugs)
-    // {
-    //    if( player.position.x + player.width == bug.position.x)
-    //     {
-    //         init()
-    //     }
-    // }
 
     bugs.forEach(bug =>{
         bug.move()
@@ -459,6 +538,46 @@ function animate(){
                 player.velocity.y = 0
             }
     })
+
+    //api collision
+    for(let i=0;i<apis.length;i++)
+    {
+        if((player.position.y + player.velocity.y >= apis[i].position.y
+        && player.position.y  + player.velocity.y <= apis[i].position.y + apis[i].height
+        && player.position.x  + player.width >= apis[i].position.x 
+        && player.position.x <= apis[i].position.x + apis[i].width) ||
+        (player.position.y + player.height + player.velocity.y >= apis[i].position.y 
+        && player.position.y + player.velocity.y <= apis[i].position.y + apis[i].height
+        && player.position.x + player.width >= apis[i].position.x 
+        && player.position.x <= apis[i].position.x + apis[i].width) 
+        )
+        {
+            apis[i].video()
+            apis.splice(i,1)
+            
+        }
+    }
+
+    //bug collision
+    for(let i=0;i<bugs.length;i++)
+    {
+        if(player.position.y + player.height <= bugs[i].position.y 
+            && player.position.y + player.height + player.velocity.y >= bugs[i].position.y
+            && player.position.x + player.width >= bugs[i].position.x 
+            && player.position.x <= bugs[i].position.x + bugs[i].width
+           )
+        {
+            bugs.splice(i,1)//kills bug
+        }
+
+        // if(player.position.x + player.width == bugs[i].position.x
+        // || player.position.x  == bugs[i].position.x + bugs[i].width)
+        // {
+        //     init()
+        // }
+
+    }
+    
 }
 
 init()
@@ -537,46 +656,6 @@ addEventListener('keyup', ({ keyCode })=>{
    }
 })
 
-let finalScore = 0
-
-function video(){
-    let videoContainer = document.querySelector('.api-check')
-    let apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU'
-    videoContainer.innerHTML = ''
-    videoContainer.innerHTML = '<input type="text" \
-    required placeholder="Search Video"> \
-    <button class="check">Check</button>'
-    
-    let btn = document.getElementsByClassName('check')[0]
-    btn.addEventListener('click', ()=>{
-        let searchQuery = document.getElementsByTagName('input')[0].value
-
-        fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`)
-        .then((result)=>{
-            if(result.ok){
-                videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
-                <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>'
-                finalScore += 100
-                return result.json()
-            }
-            else{
-                console.log('Unsuccessful api call')
-            }
-          }).then((data)=>{
-                console.log(data)
-                let videos = data.items
-                for(let i=0 ;i<3;i++)
-                {
-                    videoContainer.innerHTML += `<p style="text-align:center;font-size:13px;font-weight:bold;">${videos[i].snippet.title}</p>`
-                    
-                }
-                
-       
-          })
-    })
-}
-
-video()
 
 let score = document.querySelector('.result')
 score.innerHTML = `<p style="line-height:2;">Current score <br> is: ${finalScore}</p>`
