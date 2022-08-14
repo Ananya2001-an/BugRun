@@ -242,6 +242,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/imgs/flag.png":
+/*!***************************!*\
+  !*** ./src/imgs/flag.png ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "ac2d4ae5b2fd20865052534023b23a28.png");
+
+/***/ }),
+
 /***/ "./src/imgs/objects.png":
 /*!******************************!*\
   !*** ./src/imgs/objects.png ***!
@@ -305,11 +318,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_CurrencyApi_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../imgs/CurrencyApi.png */ "./src/imgs/CurrencyApi.png");
 /* harmony import */ var _imgs_SongApi_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../imgs/SongApi.png */ "./src/imgs/SongApi.png");
 /* harmony import */ var _imgs_EmailApi_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../imgs/EmailApi.png */ "./src/imgs/EmailApi.png");
+/* harmony import */ var _imgs_flag_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../imgs/flag.png */ "./src/imgs/flag.png");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -967,6 +982,7 @@ var platformSmallTallImage = createImage(_imgs_platformSmallTall_png__WEBPACK_IM
 var bgImage = createImage(_imgs_bg_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var objectImage = createImage(_imgs_objects_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var ytbImage = createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
+var flagImage = createImage(_imgs_flag_png__WEBPACK_IMPORTED_MODULE_15__["default"]);
 var platforms = [];
 var genericObjects = [];
 var apis = [];
@@ -980,9 +996,10 @@ var keys = {
     pressed: false
   }
 };
-var bool = ['true', 'false'];
+var bool = ['true', 'false']; //real or fake api
 
 function init() {
+  document.querySelector('.restart').style.display = 'none';
   scrollOffset = 0; //for finding the winning point
 
   player = new Player();
@@ -994,6 +1011,7 @@ function init() {
   bgImage = createImage(_imgs_bg_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
   objectImage = createImage(_imgs_objects_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
   ytbImage = createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
+  flagImage = createImage(_imgs_flag_png__WEBPACK_IMPORTED_MODULE_15__["default"]);
   platforms = [new Platform({
     x: 0,
     y: 487,
@@ -1155,9 +1173,9 @@ function init() {
     id: 2,
     real: bool[Math.floor(Math.random() * bool.length)]
   }), new Api({
-    x: 23 * platformImage.width + 1600,
-    y: 200,
-    id: 3,
+    x: 2 * platformImage.width,
+    y: 150,
+    id: 1,
     real: bool[Math.floor(Math.random() * bool.length)]
   }), new Api({
     x: 6 * platformImage.width,
@@ -1176,18 +1194,18 @@ function init() {
     real: bool[Math.floor(Math.random() * bool.length)]
   }), new Api({
     x: 13 * platformImage.width + 800 + 200,
+    y: 100,
+    id: 2,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 4 * platformImage.width + 200,
+    y: 100,
+    id: 2,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 14 * platformImage.width + 1000 + 100,
     y: 250,
-    id: 3,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 4 * platformImage.width + 400,
-    y: 375,
-    id: 4,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 2 * platformImage.width + 200,
-    y: 375,
-    id: 3,
+    id: 5,
     real: bool[Math.floor(Math.random() * bool.length)]
   })];
   bugs = [new Bug({
@@ -1198,7 +1216,7 @@ function init() {
     direction: 'left'
   }), new Bug({
     x: 7 * platformImage.width,
-    y: 150,
+    y: 200,
     speed: 2,
     distance: platformImage.width - 70,
     direction: 'right'
@@ -1222,7 +1240,7 @@ function init() {
     direction: 'right'
   }), new Bug({
     x: 19 * platformImage.width + 1400,
-    y: 425,
+    y: 375,
     speed: 7,
     distance: platformSmallTallImage.width - 70,
     direction: 'right'
@@ -1316,7 +1334,11 @@ function animate() {
 
 
   if (scrollOffset + 400 >= 23 * platformImage.width + 1800) {
-    console.log('you win');
+    document.querySelector('.result').innerHTML = "<p style=\"line-height:2;font-weight:bold;\">FINAL SCORE: ".concat(finalScore, "</p>");
+    document.querySelector('.restart').style.display = 'block';
+    document.querySelector('.restart-button').addEventListener('click', function () {
+      init();
+    });
   } //lose condition
 
 

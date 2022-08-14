@@ -13,6 +13,7 @@ import food from '../imgs/FoodApi.png'
 import currency from '../imgs/CurrencyApi.png'
 import song from '../imgs/SongApi.png'
 import email from '../imgs/EmailApi.png'
+import flag from '../imgs/flag.png'
 
 
 //create HTML image object 
@@ -722,6 +723,7 @@ let platformSmallTallImage = createImage(platformSmallTall)
 let bgImage = createImage(bg)
 let objectImage = createImage(objects)
 let ytbImage = createImage(ytb)
+let flagImage = createImage(flag)
 
 let platforms = []
 let genericObjects  = []
@@ -738,9 +740,10 @@ const keys = {
     }
 }
 
-const bool = ['true', 'false']
+const bool = ['true', 'false']//real or fake api
 
 function init(){
+    document.querySelector('.restart').style.display = 'none'
     scrollOffset = 0 //for finding the winning point
     player = new Player()
     finalScore = 0
@@ -752,6 +755,7 @@ function init(){
     bgImage = createImage(bg)
     objectImage = createImage(objects)
     ytbImage = createImage(ytb)
+    flagImage = createImage(flag)
 
     platforms = [new Platform({x:0,y:487, image:platformImage})
     ,new Platform({x:platformImage.width, y:487, image:platformImage})
@@ -793,20 +797,20 @@ function init(){
     ,new Api({x:9*platformImage.width + 200 + 200,y:100, id:5, real:bool[Math.floor(Math.random()*bool.length)]})
     ,new Api({x:19*platformImage.width + 1400,y:375, id:4, real:bool[Math.floor(Math.random()*bool.length)]})
     ,new Api({x:22*platformImage.width + 1400 + 200,y:437, id:2, real:bool[Math.floor(Math.random()*bool.length)]})
-    ,new Api({x:23*platformImage.width + 1600,y:200, id:3, real:bool[Math.floor(Math.random()*bool.length)]})
+    ,new Api({x:2*platformImage.width,y:150, id:1, real:bool[Math.floor(Math.random()*bool.length)]})
     ,new Api({x:6*platformImage.width,y:300, id:2, real:bool[Math.floor(Math.random()*bool.length)]})
     ,new Api({x:11*platformImage.width + 200 + 200,y:437, id:4, real:bool[Math.floor(Math.random()*bool.length)]})
     ,new Api({x:17*platformImage.width + 1300 + 200,y:437, id:1, real:bool[Math.floor(Math.random()*bool.length)]})
-    ,new Api({x:13*platformImage.width + 800 + 200,y:250, id:3, real:bool[Math.floor(Math.random()*bool.length)]})
-    ,new Api({x:4*platformImage.width + 400,y:375, id:4, real:bool[Math.floor(Math.random()*bool.length)]})
-    ,new Api({x:2*platformImage.width + 200,y:375, id:3, real:bool[Math.floor(Math.random()*bool.length)]})]
+    ,new Api({x:13*platformImage.width + 800 + 200,y:100, id:2, real:bool[Math.floor(Math.random()*bool.length)]})
+    ,new Api({x:4*platformImage.width + 200,y:100, id:2, real:bool[Math.floor(Math.random()*bool.length)]})
+    ,new Api({x:14*platformImage.width + 1000 + 100,y:250, id:5, real:bool[Math.floor(Math.random()*bool.length)]})]
 
     bugs = [new Bug({x:3*platformImage.width, y:437, speed:5, distance:2*platformImage.width-70, direction:'left'})
-    ,new Bug({x:7*platformImage.width, y:150, speed:2, distance:platformImage.width-70, direction:'right'})
+    ,new Bug({x:7*platformImage.width, y:200, speed:2, distance:platformImage.width-70, direction:'right'})
     ,new Bug({x:8*platformImage.width + 200, y:437, speed:3, distance:platformImage.width-70, direction:'right'})
     ,new Bug({x:10*platformImage.width + 200, y:437, speed:4, distance:2*platformImage.width-70, direction:'left'})
     ,new Bug({x:15*platformImage.width + 1200, y:200, speed:3, distance:platformImage.width-70, direction:'right'})
-    ,new Bug({x:19*platformImage.width + 1400, y:425, speed:7, distance:platformSmallTallImage.width-70, direction:'right'})
+    ,new Bug({x:19*platformImage.width + 1400, y:375, speed:7, distance:platformSmallTallImage.width-70, direction:'right'})
     ,new Bug({x:22*platformImage.width + 1400, y:437, speed:2, distance:platformImage.width-70, direction:'left'})]
 }
 
@@ -910,7 +914,11 @@ function animate(){
     //win condition
     if(scrollOffset + 400 >= 23*platformImage.width + 1800)
     {
-        console.log('you win')
+        document.querySelector('.result').innerHTML = `<p style="line-height:2;font-weight:bold;">FINAL SCORE: ${finalScore}</p>`
+        document.querySelector('.restart').style.display = 'block'
+        document.querySelector('.restart-button').addEventListener('click',()=>{
+            init()
+        })
     }
 
     //lose condition

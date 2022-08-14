@@ -95,7 +95,7 @@
         padding: 15px;
       }
 
-      .wait, .timer{
+      .wait, .timer, .restart{
         position: absolute;
         font-size: 12px;
         top: auto;
@@ -109,6 +109,13 @@
         padding: 20px;
         display: none;
         line-height: 1.5;
+      }
+
+      .restart{
+        height: 100px;
+      }
+      .restart-button{
+        margin: 0;
       }
 
       .tutorial-1{
@@ -185,6 +192,9 @@
           Use left, up and right arrow keys or 
           'a','w' and 'd' keys to control your player's movements.
         </p>
+        <p style="line-height: 1.5;font-size: 15px;font-style: italic;margin-top: 40px;">Note: if the acquired API turns out to be fake then same amount to be gained would get deducted from the score. So choose the API at 
+          your own risk. Moreover everytime you restart the game, each API would get randomly assigned as fake or real.(eg if Youtube API is fake then -100 instead of +100.)
+        </p>
         <div class="button-row">
           <button class="skip">Skip Tutorial</button>
 
@@ -222,9 +232,13 @@
           <h4>4/4</h4>
         </div>
         <h2>API Points</h2>
-        <div style="display:grid;grid-template-columns:auto auto;text-align:center;">
-          <h4>API</h4><h4>Points</h4>
-          <h4>Youtube</h4><h4>100</h4>
+        <div style="display:grid;grid-template-columns:350px 350px;text-align:center;">
+          <h6 style="font-weight: bold;">API</h6><h6 style="font-weight: bold;">Points</h6>
+          <h6>Email Verifier</h6><h6>50</h6>
+          <h6>Currency Exchange</h6><h6>100</h6>
+          <h6>Youtube</h6><h6>200</h6>
+          <h6>Deezer Songs</h6><h6>300</h6>
+          <h6>Edamam Food</h6><h6>400</h6>
         </div>
         <div class="button-row">
           <button class="skip">Skip Tutorial</button>
@@ -240,6 +254,11 @@
 
       <div class="timer">
         <h4>Resuming in 5 seconds</h4>
+      </div>
+
+      <div class="restart">
+        <h4>Play again ?</h4>
+        <button class="restart-button">Restart</button>
       </div>
 
       <div style="display: flex;flex-direction: column;">
