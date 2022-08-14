@@ -95,6 +95,22 @@
         padding: 15px;
       }
 
+      .wait, .timer{
+        position: absolute;
+        font-size: 12px;
+        top: auto;
+        left: auto;
+        background-color: beige;
+        width: 600px;
+        height: 60px;
+        border: 2px solid burlywood;
+        color: burlywood;
+        text-align: center;
+        padding: 20px;
+        display: none;
+        line-height: 1.5;
+      }
+
       .tutorial-1{
         animation: come-down 1s ease-in-out ;
       }
@@ -166,8 +182,8 @@
         </div>
         <h2>Player Movement</h2>
         <p style="line-height: 1.5;font-size: 15px;">
-          Use up, down, left and right arrow keys or 
-          'a','s','w' and 'd' keys to control your player's movements.
+          Use left, up and right arrow keys or 
+          'a','w' and 'd' keys to control your player's movements.
         </p>
         <div class="button-row">
           <button class="skip">Skip Tutorial</button>
@@ -218,6 +234,13 @@
         </div>
       </div>
 
+      <div class="wait">
+        <h4>Perform API check as shown on right hand side to update score...game paused till then</h4>
+      </div>
+
+      <div class="timer">
+        <h4>Resuming in 5 seconds</h4>
+      </div>
 
       <div style="display: flex;flex-direction: column;">
         

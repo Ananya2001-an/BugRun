@@ -12,7 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^6.5.2"
+    "cohere-ai": "^4.0.0",
+    "cohere-js": "^1.0.21",
+    "fs": "^0.0.1-security",
+    "mongoose": "^6.5.2",
+    "openai": "^3.0.0",
+    "twilio": "^3.80.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

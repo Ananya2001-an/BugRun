@@ -112,6 +112,58 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/imgs/CurrencyApi.png":
+/*!**********************************!*\
+  !*** ./src/imgs/CurrencyApi.png ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "5a6d1587ef79dc12b4b32e25c0d5df4a.png");
+
+/***/ }),
+
+/***/ "./src/imgs/EmailApi.png":
+/*!*******************************!*\
+  !*** ./src/imgs/EmailApi.png ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "e91039c3e6017315ed871fadb0a4cde8.png");
+
+/***/ }),
+
+/***/ "./src/imgs/FoodApi.png":
+/*!******************************!*\
+  !*** ./src/imgs/FoodApi.png ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "dccc658a54698192c8cb85947cbe0239.png");
+
+/***/ }),
+
+/***/ "./src/imgs/SongApi.png":
+/*!******************************!*\
+  !*** ./src/imgs/SongApi.png ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "07251b7a1710eb9479aa523074cb0e3d.png");
+
+/***/ }),
+
 /***/ "./src/imgs/SpriteRunLeft.png":
 /*!************************************!*\
   !*** ./src/imgs/SpriteRunLeft.png ***!
@@ -173,7 +225,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "405353f569fd13592b989497e9cf5464.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "b32401e3869c52d2f31307f451cdc718.png");
 
 /***/ }),
 
@@ -249,11 +301,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_BugRight_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../imgs/BugRight.png */ "./src/imgs/BugRight.png");
 /* harmony import */ var _imgs_BugLeft_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../imgs/BugLeft.png */ "./src/imgs/BugLeft.png");
 /* harmony import */ var _imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../imgs/YoutubeApi.png */ "./src/imgs/YoutubeApi.png");
+/* harmony import */ var _imgs_FoodApi_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../imgs/FoodApi.png */ "./src/imgs/FoodApi.png");
+/* harmony import */ var _imgs_CurrencyApi_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../imgs/CurrencyApi.png */ "./src/imgs/CurrencyApi.png");
+/* harmony import */ var _imgs_SongApi_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../imgs/SongApi.png */ "./src/imgs/SongApi.png");
+/* harmony import */ var _imgs_EmailApi_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../imgs/EmailApi.png */ "./src/imgs/EmailApi.png");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
 
 
 
@@ -328,6 +388,14 @@ canvas.width = 1024;
 canvas.height = 576;
 var gravity = 1.5;
 var finalScore = 0;
+var paused = false;
+var score = document.querySelector('.result');
+
+function updateScore() {
+  score.innerHTML = "<p style=\"line-height:2;\">Current score <br> is: ".concat(finalScore, "</p>");
+}
+
+updateScore();
 
 var Player = /*#__PURE__*/function () {
   function Player() {
@@ -375,7 +443,9 @@ var Player = /*#__PURE__*/function () {
       if (this.frames < 23 && this.frameDirection == 'right') this.frames++;else if (this.frames >= 23) this.frameDirection = 'left';
       if (this.frames > 1 && this.frameDirection == 'left') this.frames--;else if (this.frames <= 1) this.frameDirection = 'right';
       this.draw();
-      if (this.position.y + this.velocity.y >= 0) this.position.y += this.velocity.y;
+      if (this.position.y + this.velocity.y >= 0) this.position.y += this.velocity.y;else {
+        this.velocity.y = 0;
+      }
       this.position.x += this.velocity.x;
       if (this.position.y + this.velocity.y + this.height <= canvas.height) this.velocity.y += gravity; //acceleration due to gravity
     }
@@ -440,26 +510,109 @@ var GenericObjects = /*#__PURE__*/function () {
   return GenericObjects;
 }();
 
+function changeOpacity() {
+  document.querySelector('canvas').style.opacity = 1;
+  document.querySelector('.timer').style.display = 'none';
+}
+
+function showTimer() {
+  document.querySelector('.timer').style.display = 'block';
+}
+
+function clearResults() {
+  document.querySelector('.api-check').innerHTML = '';
+}
+
 var Api = /*#__PURE__*/function () {
   function Api(_ref3) {
     var x = _ref3.x,
         y = _ref3.y,
-        image = _ref3.image;
+        id = _ref3.id,
+        real = _ref3.real;
 
     _classCallCheck(this, Api);
 
     this.position = {
       x: x,
       y: y
-    }, this.image = image, this.width = 50, this.height = 50;
+    }, this.id = id, this.real = real;
     this.frames = 0;
     this.frameDirection = 'right';
+    this.sprites = {
+      1: {
+        img: createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]),
+        cropWidth: 240,
+        cropHeight: 170,
+        width: 50,
+        height: 40
+      },
+      2: {
+        img: createImage(_imgs_FoodApi_png__WEBPACK_IMPORTED_MODULE_11__["default"]),
+        cropWidth: 200,
+        cropHeight: 190,
+        width: 50,
+        height: 50
+      },
+      3: {
+        img: createImage(_imgs_CurrencyApi_png__WEBPACK_IMPORTED_MODULE_12__["default"]),
+        cropWidth: 180,
+        cropHeight: 180,
+        width: 50,
+        height: 50
+      },
+      4: {
+        img: createImage(_imgs_SongApi_png__WEBPACK_IMPORTED_MODULE_13__["default"]),
+        cropWidth: 170,
+        cropHeight: 170,
+        width: 50,
+        height: 50
+      },
+      5: {
+        img: createImage(_imgs_EmailApi_png__WEBPACK_IMPORTED_MODULE_14__["default"]),
+        cropWidth: 70,
+        cropHeight: 150,
+        width: 30,
+        height: 40
+      }
+    };
+
+    if (this.id == 1) {
+      this.currentSprite = this.sprites[1].img;
+      this.currentCropWidth = this.sprites[1].cropWidth;
+      this.currentCropHeight = this.sprites[1].cropHeight;
+      this.width = this.sprites[1].width;
+      this.height = this.sprites[1].height;
+    } else if (this.id == 2) {
+      this.currentSprite = this.sprites[2].img;
+      this.currentCropWidth = this.sprites[2].cropWidth;
+      this.currentCropHeight = this.sprites[2].cropHeight;
+      this.width = this.sprites[2].width;
+      this.height = this.sprites[2].height;
+    } else if (this.id == 3) {
+      this.currentSprite = this.sprites[3].img;
+      this.currentCropWidth = this.sprites[3].cropWidth;
+      this.currentCropHeight = this.sprites[3].cropHeight;
+      this.width = this.sprites[3].width;
+      this.height = this.sprites[3].height;
+    } else if (this.id == 4) {
+      this.currentSprite = this.sprites[4].img;
+      this.currentCropWidth = this.sprites[4].cropWidth;
+      this.currentCropHeight = this.sprites[4].cropHeight;
+      this.width = this.sprites[4].width;
+      this.height = this.sprites[4].height;
+    } else {
+      this.currentSprite = this.sprites[5].img;
+      this.currentCropWidth = this.sprites[5].cropWidth;
+      this.currentCropHeight = this.sprites[5].cropHeight;
+      this.width = this.sprites[5].width;
+      this.height = this.sprites[5].height;
+    }
   }
 
   _createClass(Api, [{
     key: "draw",
     value: function draw() {
-      c.drawImage(this.image, 240 * this.frames, 0, 240, 200, this.position.x, this.position.y, this.width, this.height);
+      c.drawImage(this.currentSprite, this.currentCropWidth * this.frames, 0, this.currentCropWidth, this.currentCropHeight, this.position.x, this.position.y, this.width, this.height);
     }
   }, {
     key: "update",
@@ -467,38 +620,279 @@ var Api = /*#__PURE__*/function () {
       if (this.frames < 7 && this.frameDirection == 'right') this.frames++;else if (this.frames >= 7) this.frameDirection = 'left';
       if (this.frames > 1 && this.frameDirection == 'left') this.frames--;else if (this.frames <= 1) this.frameDirection = 'right';
       this.draw();
-    }
+    } //youtube api
+
   }, {
     key: "video",
     value: function video() {
+      var _this = this;
+
       var videoContainer = document.querySelector('.api-check');
       var apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU';
-      videoContainer.innerHTML = '';
-      videoContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the API to see if it\'s real or fake.</h5>\
+      videoContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Youtube" API to see if it\'s real or fake.</h5>\
         <input type="text" \
         required placeholder="Search Video"> \
         <button class="check">Check</button>\
         ';
       var btn = document.getElementsByClassName('check')[0];
       btn.addEventListener('click', function () {
-        var searchQuery = document.getElementsByTagName('input')[0].value;
-        fetch("https://www.googleapis.com/youtube/v3/search?key=".concat(apiKey, "&type=video&part=snippet&q=").concat(searchQuery)).then(function (result) {
-          if (result.ok) {
-            videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
-                    <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
-            finalScore += 100;
-            return result.json();
-          } else {
-            console.log('Unsuccessful api call');
-          }
-        }).then(function (data) {
-          console.log(data);
-          var videos = data.items;
+        if (_this.real == 'true') {
+          var searchQuery = document.getElementsByTagName('input')[0].value;
+          fetch("https://www.googleapis.com/youtube/v3/search?key=".concat(apiKey, "&type=video&part=snippet&q=").concat(searchQuery)).then(function (result) {
+            if (result.ok) {
+              videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
+                        <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
+              finalScore += 200;
+              updateScore();
+              return result.json();
+            } else {
+              console.log('Unsuccessful api call');
+            }
+          }).then(function (data) {
+            console.log(data);
+            var videos = data.items;
 
-          for (var i = 0; i < 3; i++) {
-            videoContainer.innerHTML += "<p style=\"text-align:center;font-size:13px;font-weight:bold;\">".concat(videos[i].snippet.title, "</p>");
-          }
-        });
+            for (var i = 0; i < 3; i++) {
+              videoContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">".concat(videos[i].snippet.title, "</p>");
+            }
+          })["catch"](function (err) {
+            videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
+                    Since the API was real, hence the score would be increased.</h5>';
+            finalScore += 200;
+            updateScore();
+          });
+        } else {
+          videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
+          finalScore -= 200;
+          updateScore();
+        }
+
+        paused = false;
+        document.querySelector('.wait').style.display = 'none';
+        showTimer();
+        setTimeout(animate, 5000);
+        setTimeout(changeOpacity, 5000);
+        setTimeout(clearResults, 5000);
+      });
+    } //currencyExchange api
+
+  }, {
+    key: "currency",
+    value: function currency() {
+      var _this2 = this;
+
+      var currContainer = document.querySelector('.api-check');
+      currContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "CurrencyExchange" API to see if it\'s real or fake.</h5>\
+        <input type="text" \
+        required class="from" placeholder="From (eg: USD)"> \
+        <input type="text" \
+        required class="to" placeholder="To (eg: INR)"> \
+        <input type="text" \
+        required class="amt" placeholder="Enter Amount"> \
+        <button class="check">Check</button>\
+        ';
+      var options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
+          'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+        }
+      };
+      var btn = document.getElementsByClassName('check')[0];
+      btn.addEventListener('click', function () {
+        if (_this2.real == 'true') {
+          var from = document.querySelector('.from').value;
+          var to = document.querySelector('.to').value;
+          var amt = document.querySelector('.amt').value;
+          fetch("https://currency-exchange.p.rapidapi.com/exchange?from=".concat(from, "&to=").concat(to, "&q=").concat(amt), options).then(function (response) {
+            return response.json();
+          }).then(function (response) {
+            var conversion = response;
+            currContainer.innerHTML = "<h5 style=\"text-align:center;line-height:2;color:green;\">CurrencyExchange API worked successfully!!</h5>                    <p style=\"text-align:center;font-size:9px;font-style:italic;font-weight:lighter;\">Below result is fetched with API.</p>                    <p style=\"text-align:center;font-size:12px;\">".concat(amt, " ").concat(from, " is equivalent to ").concat(conversion, " ").concat(to, ".</p>");
+            finalScore += 100;
+            updateScore();
+          })["catch"](function (err) {
+            currContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
+                    Since the API was real, hence the score would be increased.</h5>';
+            finalScore += 100;
+            updateScore();
+          });
+        } else {
+          currContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
+          finalScore -= 100;
+          updateScore();
+        }
+
+        paused = false;
+        document.querySelector('.wait').style.display = 'none';
+        showTimer();
+        setTimeout(animate, 5000);
+        setTimeout(changeOpacity, 5000);
+        setTimeout(clearResults, 5000);
+      });
+    } //deezer songs api
+
+  }, {
+    key: "song",
+    value: function song() {
+      var _this3 = this;
+
+      var songContainer = document.querySelector('.api-check');
+      songContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Deezer" API to see if it\'s real or fake.</h5>\
+        <input type="text" \
+        required placeholder="Search song/artist/album"> \
+        <button class="check">Check</button>\
+        ';
+      var btn = document.getElementsByClassName('check')[0];
+      btn.addEventListener('click', function () {
+        if (_this3.real == 'true') {
+          var searchQuery = document.getElementsByTagName('input')[0].value;
+          var options = {
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
+              'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+            }
+          };
+          fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=".concat(searchQuery), options).then(function (response) {
+            return response.json();
+          }).then(function (response) {
+            songContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Deezer API worked successfully!!</h5>\
+                        <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
+            var songs = response.data;
+            console.log(songs);
+
+            for (var i = 0; i < 3; i++) {
+              songContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">".concat(songs[i].album.title, " sung by ").concat(songs[i].artist.name, "</p>");
+            }
+
+            finalScore += 300;
+            updateScore();
+          })["catch"](function (err) {
+            songContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
+                        Since the API was real, hence the score would be increased.</h5>';
+            finalScore += 300;
+            updateScore();
+          });
+        } else {
+          songContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
+          finalScore -= 300;
+          updateScore();
+        }
+
+        paused = false;
+        document.querySelector('.wait').style.display = 'none';
+        showTimer();
+        setTimeout(animate, 5000);
+        setTimeout(changeOpacity, 5000);
+        setTimeout(clearResults, 5000);
+      });
+    } //edamam food api
+
+  }, {
+    key: "food",
+    value: function food() {
+      var _this4 = this;
+
+      var foodContainer = document.querySelector('.api-check');
+      foodContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Edamam Food and Grocery Database" API to see if it\'s real or fake.</h5>\
+        <input type="text" \
+        required placeholder="Search food"> \
+        <button class="check">Check</button>\
+        ';
+      var btn = document.getElementsByClassName('check')[0];
+      btn.addEventListener('click', function () {
+        if (_this4.real == 'true') {
+          var searchQuery = document.getElementsByTagName('input')[0].value;
+          var options = {
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
+              'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
+            }
+          };
+          fetch("https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=".concat(searchQuery), options).then(function (response) {
+            return response.json();
+          }).then(function (response) {
+            foodContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Edamam API worked successfully!!</h5>\
+                        <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
+            var foods = response.hints;
+
+            for (var i = 0; i < 3; i++) {
+              foodContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">".concat(foods[i].food.label, " (").concat(foods[i].food.nutrients.ENERC_KCAL, " KCAL)</p>");
+            }
+
+            finalScore += 400;
+            updateScore();
+          })["catch"](function (err) {
+            foodContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
+                    Since the API was real, hence the score would be increased. </h5>';
+            finalScore += 400;
+            updateScore();
+          });
+        } else {
+          foodContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
+          finalScore -= 400;
+          updateScore();
+        }
+
+        paused = false;
+        document.querySelector('.wait').style.display = 'none';
+        showTimer();
+        setTimeout(animate, 5000);
+        setTimeout(changeOpacity, 5000);
+        setTimeout(clearResults, 5000);
+      });
+    } //email verifier
+
+  }, {
+    key: "email",
+    value: function email() {
+      var _this5 = this;
+
+      var mailContainer = document.querySelector('.api-check');
+      mailContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Email verifier" API to see if it\'s real or fake.</h5>\
+        <input type="text" \
+        required placeholder="Enter email"> \
+        <button class="check">Check</button>\
+        ';
+      var btn = document.getElementsByClassName('check')[0];
+      btn.addEventListener('click', function () {
+        if (_this5.real == 'true') {
+          var searchQuery = document.getElementsByTagName('input')[0].value;
+          var options = {
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
+              'X-RapidAPI-Host': 'email-verifier-completely-free.p.rapidapi.com'
+            }
+          };
+          fetch("https://email-verifier-completely-free.p.rapidapi.com/email-verification/".concat(searchQuery), options).then(function (response) {
+            return response.json();
+          }).then(function (response) {
+            mailContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Email Verifier API worked successfully!!</h5>\
+                    <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below result is fetched with API.</p>';
+            mailContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">Format: ".concat(response.response.format, ", Professional: ").concat(response.response.professional, "</p>");
+            finalScore += 50;
+            updateScore();
+          })["catch"](function (err) {
+            mailContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
+                    Since the API was real, hence the score would be increased. </h5>';
+            finalScore += 50;
+            updateScore();
+          });
+        } else {
+          mailContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
+          finalScore -= 50;
+          updateScore();
+        }
+
+        paused = false;
+        document.querySelector('.wait').style.display = 'none';
+        showTimer();
+        setTimeout(animate, 5000);
+        setTimeout(changeOpacity, 5000);
+        setTimeout(clearResults, 5000);
       });
     }
   }]);
@@ -586,12 +980,14 @@ var keys = {
     pressed: false
   }
 };
+var bool = ['true', 'false'];
 
 function init() {
   scrollOffset = 0; //for finding the winning point
 
   player = new Player();
   finalScore = 0;
+  updateScore();
   document.querySelector('.api-check').innerHTML = '';
   platformImage = createImage(_imgs_platform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
   platformSmallTallImage = createImage(_imgs_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -679,16 +1075,12 @@ function init() {
     y: 425,
     image: platformSmallTallImage
   }), new Platform({
-    x: 4 * platformImage.width,
-    y: 200,
-    image: platformSmallTallImage
-  }), new Platform({
     x: 7 * platformImage.width,
-    y: 200,
+    y: 250,
     image: platformImage
   }), new Platform({
     x: 12 * platformImage.width + 700,
-    y: 200,
+    y: 240,
     image: platformImage
   }), new Platform({
     x: 14 * platformImage.width + 1000,
@@ -700,7 +1092,7 @@ function init() {
     image: platformImage
   }), new Platform({
     x: 20 * platformImage.width + 1300,
-    y: 210,
+    y: 240,
     image: platformImage
   }), new Platform({
     x: 23 * platformImage.width + 1800,
@@ -735,23 +1127,68 @@ function init() {
   apis = [new Api({
     x: 7 * platformImage.width + 200,
     y: 100,
-    image: ytbImage
+    id: 1,
+    real: bool[Math.floor(Math.random() * bool.length)]
   }), new Api({
     x: 15 * platformImage.width + 1200 + 200,
     y: 150,
-    image: ytbImage
+    id: 3,
+    real: bool[Math.floor(Math.random() * bool.length)]
   }), new Api({
     x: 19 * platformImage.width + 1400 + 200,
     y: 150,
-    image: ytbImage
+    id: 1,
+    real: bool[Math.floor(Math.random() * bool.length)]
   }), new Api({
     x: 9 * platformImage.width + 200 + 200,
     y: 100,
-    image: ytbImage
+    id: 5,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 19 * platformImage.width + 1400,
+    y: 375,
+    id: 4,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 22 * platformImage.width + 1400 + 200,
+    y: 437,
+    id: 2,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 23 * platformImage.width + 1600,
+    y: 200,
+    id: 3,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 6 * platformImage.width,
+    y: 300,
+    id: 2,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 11 * platformImage.width + 200 + 200,
+    y: 437,
+    id: 4,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 17 * platformImage.width + 1300 + 200,
+    y: 437,
+    id: 1,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 13 * platformImage.width + 800 + 200,
+    y: 250,
+    id: 3,
+    real: bool[Math.floor(Math.random() * bool.length)]
+  }), new Api({
+    x: 4 * platformImage.width + 400,
+    y: 375,
+    id: 4,
+    real: bool[Math.floor(Math.random() * bool.length)]
   }), new Api({
     x: 2 * platformImage.width + 200,
-    y: 200,
-    image: ytbImage
+    y: 375,
+    id: 3,
+    real: bool[Math.floor(Math.random() * bool.length)]
   })];
   bugs = [new Bug({
     x: 3 * platformImage.width,
@@ -777,11 +1214,32 @@ function init() {
     speed: 4,
     distance: 2 * platformImage.width - 70,
     direction: 'left'
+  }), new Bug({
+    x: 15 * platformImage.width + 1200,
+    y: 200,
+    speed: 3,
+    distance: platformImage.width - 70,
+    direction: 'right'
+  }), new Bug({
+    x: 19 * platformImage.width + 1400,
+    y: 425,
+    speed: 7,
+    distance: platformSmallTallImage.width - 70,
+    direction: 'right'
+  }), new Bug({
+    x: 22 * platformImage.width + 1400,
+    y: 437,
+    speed: 2,
+    distance: platformImage.width - 70,
+    direction: 'left'
   })];
 }
 
 function animate() {
-  requestAnimationFrame(animate);
+  if (paused == false) {
+    requestAnimationFrame(animate);
+  }
+
   c.fillStyle = 'white';
   c.fillRect(0, 0, canvas.width, canvas.height);
   genericObjects.forEach(function (obj) {
@@ -875,7 +1333,22 @@ function animate() {
 
   for (var i = 0; i < apis.length; i++) {
     if (player.position.y + player.velocity.y >= apis[i].position.y && player.position.y + player.velocity.y <= apis[i].position.y + apis[i].height && player.position.x + player.width >= apis[i].position.x && player.position.x <= apis[i].position.x + apis[i].width || player.position.y + player.height + player.velocity.y >= apis[i].position.y && player.position.y + player.velocity.y <= apis[i].position.y + apis[i].height && player.position.x + player.width >= apis[i].position.x && player.position.x <= apis[i].position.x + apis[i].width) {
-      apis[i].video();
+      paused = true;
+      document.querySelector('canvas').style.opacity = 0.5;
+      document.querySelector('.wait').style.display = 'block';
+
+      if (apis[i].id == 1) {
+        apis[i].video();
+      } else if (apis[i].id == 2) {
+        apis[i].food();
+      } else if (apis[i].id == 3) {
+        apis[i].currency();
+      } else if (apis[i].id == 4) {
+        apis[i].song();
+      } else {
+        apis[i].email();
+      }
+
       apis.splice(i, 1);
     }
   } //bug collision
@@ -961,7 +1434,7 @@ addEventListener('keydown', function (_ref5) {
       {
         //key uparrow
         console.log('up');
-        player.velocity.y -= 20;
+        player.velocity.y -= 25;
         break;
       }
   }
@@ -1003,8 +1476,6 @@ addEventListener('keyup', function (_ref6) {
       }
   }
 });
-var score = document.querySelector('.result');
-score.innerHTML = "<p style=\"line-height:2;\">Current score <br> is: ".concat(finalScore, "</p>");
 
 /***/ })
 
