@@ -3,7 +3,7 @@ Used Canvas Boilerplate to quickly create modern canvas piece using ES6 and webp
 "https://github.com/christopher4lis/canvas-boilerplate"
 
 
-# Collect The API game
+# Simple JS sidescroller game
 
 ## Getting Started
 
