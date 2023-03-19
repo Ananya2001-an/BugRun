@@ -27,8 +27,7 @@ Your canvas piece should open up automatically at http://localhost:3000 and you 
 
 # About
 
-Fun sidescroller game that allows users to collect special API items on the way and boost their score. Made using HTML canvas, CSS and JavaScript.
+Fun side-scroller game that allows users to collect special API items on the way and boost their score. Made using HTML canvas, CSS and JavaScript.
 
-![2022-08-14 15_02_27-Window](https://user-images.githubusercontent.com/55504616/184533316-de623d77-bdbe-43f1-a2be-c89fccf9fea8.png)
+![gif](https://user-images.githubusercontent.com/55504616/226186779-7ad330a4-04e7-4660-9875-219e62c445d9.gif)
 
-![2022-08-14 15_03_15-Window](https://user-images.githubusercontent.com/55504616/184533325-b51aaf89-4fa6-4479-b696-f54e95fb404f.png)
