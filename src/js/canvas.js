@@ -8,8 +8,6 @@ import standRight from '../imgs/SpriteStandRight.png'
 import standLeft from '../imgs/SpriteStandLeft.png'
 import bugRight from '../imgs/BugRight.png'
 import bugLeft from '../imgs/BugLeft.png'
-import flag from '../imgs/flag.png'
-
 
 //create HTML image object 
 function createImage(imageSrc){

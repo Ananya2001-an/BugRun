@@ -5,6 +5,12 @@ Used Canvas Boilerplate to quickly create modern canvas piece using ES6 and webp
 
 # BugRun
 
+Can use hand gestures to control the game! Run the `main.py` file in `hand-tracker-cv` folder. Used dependencies like **opencv-python** for computer vision and **mediapipe** for hand gesture tracking. 
+
+## Demo
+
+https://github.com/Ananya2001-an/Rainbow/assets/55504616/d78390fc-b1d6-4fef-b04a-9be7fd26efe2
+
 ## Getting Started
 
 1. Clone the repo:
@@ -28,6 +34,4 @@ npm start
 ```
 
 Your canvas piece should open up automatically at http://localhost:3000 and you should see the game running.
-
-![gif](https://user-images.githubusercontent.com/55504616/226186779-7ad330a4-04e7-4660-9875-219e62c445d9.gif)
 
