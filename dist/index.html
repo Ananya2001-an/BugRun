@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Collect The API</title>
+    <title>BugRun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,19 +20,11 @@
         position: relative;
 
       }
+      
       ::-webkit-scrollbar{
         display: none;
       }
 
-      .api-check{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: burlywood;
-        max-width:220px;
-        opacity: 0.5;
-      }
       a{
         color: burlywood;
       }
@@ -72,17 +64,7 @@
         border-color: beige;
       }
 
-      .result{
-        color: burlywood;
-        font-size: 15px;
-        text-align: center;
-      }
-
-      .result-class{
-        border-top: 1px solid burlywood;
-        opacity: 0.5;
-      }
-      .tutorial-1, .tutorial-2,.tutorial-3, .tutorial-4{
+      .tutorial{
         position: absolute;
         top: auto;
         left: auto;
@@ -93,16 +75,17 @@
         color: burlywood;
         text-align: center;
         padding: 15px;
+        animation: fade-in 1s ease-in-out ;
       }
 
-      .wait, .timer, .restart{
+      .restart{
         position: absolute;
         font-size: 12px;
         top: auto;
         left: auto;
         background-color: beige;
         width: 600px;
-        height: 60px;
+        height: 100px;
         border: 2px solid burlywood;
         color: burlywood;
         text-align: center;
@@ -111,18 +94,11 @@
         line-height: 1.5;
       }
 
-      .restart{
-        height: 100px;
-      }
       .restart-button{
         margin: 0;
       }
 
-      .tutorial-1{
-        animation: come-down 1s ease-in-out ;
-      }
-
-      @keyframes come-down {
+      @keyframes fade-in {
         0%{
           transform: translateY(-700px);
           opacity: 0.5;
@@ -133,12 +109,7 @@
         }
       }
 
-      .tutorial-2,.tutorial-3, .tutorial-4{
-        display: none;
-      }
-
-      .button-row{
-        
+      .button-row{        
         position: absolute;
         bottom: 0;
         display: flex;
@@ -149,128 +120,29 @@
         margin-top: 0;
       }
 
-      .counter{
-        height: 20px;
-        display: flex;
-        justify-content: flex-end;
-      }
-
     </style>
-  <link rel="shortcut icon" href="favicon.ico"></head>
+  <link rel="icon" href="favicon.ico"></head>
   <body>
       <canvas style="opacity: 0.5;"></canvas>
 
-      <div class="tutorial-1">
-        <div class="counter">
-          <h4>1/4</h4>
-        </div>
-        <h2>Hi Coder !</h2>
-        <p style="line-height: 1.5;font-size: 15px;">You have a mission to accomplish today. In this game you
-          must collect all lost API's that were crucial for your next big coding project. 
-          But beware it's not easy! In your way you will encounter some 
-          annoying bugs that might send you back to the start point.<br><br>
-          Jump carefully cause death pits will also do the same.
-          But this is not it, there is another big issue that we need to look after.
-          Some API's look the same as a normal one but are not real. If you acquire a 
-          fake API then your score will reduce. And you will lose this game if your 
-          score goes below 500. So what are you waiting for, start running..!! 
+      <div class="tutorial">
+        <h2>Hi Player!</h2>
+        <p style="line-height: 1.5;font-size: 15px;">You have a mission to accomplish today. Reach the finish point without getting hit by any bugs on the way!<br><br>
+        Use left, up and right arrow keys or 
+        'a','w' and 'd' keys to control your player's movements.<br><br>
+        Use up or 'w' key to dodge bugs and death pits.
+        You can also kill bugs by jumping over them.
+        If you fall into a death pit or collide with a bug, you would
+        have to start again.
         </p>
         <div class="button-row">
-          <button class="skip">Skip Tutorial</button>
-          <div style="margin-left: 540px;">
-            <button class="next">Next</button>
-          </div>
+          <button class="skip">Play Now</button>
         </div>
-      </div>
-
-      <div class="tutorial-2">
-        <div class="counter">
-          <h4>2/4</h4>
-        </div>
-        <h2>Player Movement</h2>
-        <p style="line-height: 1.5;font-size: 15px;">
-          Use left, up and right arrow keys or 
-          'a','w' and 'd' keys to control your player's movements.
-        </p>
-        <p style="line-height: 1.5;font-size: 15px;font-style: italic;margin-top: 40px;">Note: if the acquired API turns out to be fake then same amount to be gained would get deducted from the score. So choose the API at 
-          your own risk. Moreover everytime you restart the game, each API would get randomly assigned as fake or real.(eg if Youtube API is fake then -100 instead of +100.)
-        </p>
-        <div class="button-row">
-          <button class="skip">Skip Tutorial</button>
-
-          <div style="margin-left: 470px;">
-            <button class="back">Back</button>
-            <button class="next">Next</button>
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="tutorial-3">
-        <div class="counter">
-          <h4>3/4</h4>
-        </div>
-        <h2>Avoid Bugs and Death Pits</h2>
-        <p style="line-height: 1.5;font-size: 15px;">Use up or 'w' key to dodge bugs and death pits.
-          You can also kill bugs by jumping over them.
-          If you fall into a death pit or collide with a bug, you would
-          have to start again.
-        </p>
-        <div class="button-row">
-          <button class="skip">Skip Tutorial</button>
-
-          <div style="margin-left: 340px;">
-            <button class="back">Back</button>
-            <button class="next">See points for each API</button>
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="tutorial-4">
-        <div class="counter">
-          <h4>4/4</h4>
-        </div>
-        <h2>API Points</h2>
-        <div style="display:grid;grid-template-columns:350px 350px;text-align:center;">
-          <h6 style="font-weight: bold;">API</h6><h6 style="font-weight: bold;">Points</h6>
-          <h6>Email Verifier</h6><h6>50</h6>
-          <h6>Currency Exchange</h6><h6>100</h6>
-          <h6>Youtube</h6><h6>200</h6>
-          <h6>Deezer Songs</h6><h6>300</h6>
-          <h6>Edamam Food</h6><h6>400</h6>
-        </div>
-        <div class="button-row">
-          <button class="skip">Skip Tutorial</button>
-          <div style="margin-left: 540px;">
-            <button class="back">Back</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="wait">
-        <h4>Perform API check as shown on right hand side to update score...game paused till then</h4>
-      </div>
-
-      <div class="timer">
-        <h4>Resuming in 5 seconds</h4>
       </div>
 
       <div class="restart">
         <h4>Play again ?</h4>
         <button class="restart-button">Restart</button>
-      </div>
-
-      <div style="display: flex;flex-direction: column;">
-        
-        <div class="api-check">
-        
-        </div>
-        
-        <div class="result-class">
-          <h6 class="result"></h6>
-        </div>
-      
       </div>
      
   <script src="./js/canvas.bundle.js"></script></body>

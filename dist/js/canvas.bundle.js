@@ -112,58 +112,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/imgs/CurrencyApi.png":
-/*!**********************************!*\
-  !*** ./src/imgs/CurrencyApi.png ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "5a6d1587ef79dc12b4b32e25c0d5df4a.png");
-
-/***/ }),
-
-/***/ "./src/imgs/EmailApi.png":
-/*!*******************************!*\
-  !*** ./src/imgs/EmailApi.png ***!
-  \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "e91039c3e6017315ed871fadb0a4cde8.png");
-
-/***/ }),
-
-/***/ "./src/imgs/FoodApi.png":
-/*!******************************!*\
-  !*** ./src/imgs/FoodApi.png ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "dccc658a54698192c8cb85947cbe0239.png");
-
-/***/ }),
-
-/***/ "./src/imgs/SongApi.png":
-/*!******************************!*\
-  !*** ./src/imgs/SongApi.png ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "07251b7a1710eb9479aa523074cb0e3d.png");
-
-/***/ }),
-
 /***/ "./src/imgs/SpriteRunLeft.png":
 /*!************************************!*\
   !*** ./src/imgs/SpriteRunLeft.png ***!
@@ -213,19 +161,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "a136f3932e2944449b960bf7c87adb7e.png");
-
-/***/ }),
-
-/***/ "./src/imgs/YoutubeApi.png":
-/*!*********************************!*\
-  !*** ./src/imgs/YoutubeApi.png ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "b32401e3869c52d2f31307f451cdc718.png");
 
 /***/ }),
 
@@ -313,19 +248,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imgs_SpriteStandLeft_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../imgs/SpriteStandLeft.png */ "./src/imgs/SpriteStandLeft.png");
 /* harmony import */ var _imgs_BugRight_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../imgs/BugRight.png */ "./src/imgs/BugRight.png");
 /* harmony import */ var _imgs_BugLeft_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../imgs/BugLeft.png */ "./src/imgs/BugLeft.png");
-/* harmony import */ var _imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../imgs/YoutubeApi.png */ "./src/imgs/YoutubeApi.png");
-/* harmony import */ var _imgs_FoodApi_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../imgs/FoodApi.png */ "./src/imgs/FoodApi.png");
-/* harmony import */ var _imgs_CurrencyApi_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../imgs/CurrencyApi.png */ "./src/imgs/CurrencyApi.png");
-/* harmony import */ var _imgs_SongApi_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../imgs/SongApi.png */ "./src/imgs/SongApi.png");
-/* harmony import */ var _imgs_EmailApi_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../imgs/EmailApi.png */ "./src/imgs/EmailApi.png");
-/* harmony import */ var _imgs_flag_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../imgs/flag.png */ "./src/imgs/flag.png");
+/* harmony import */ var _imgs_flag_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../imgs/flag.png */ "./src/imgs/flag.png");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 
@@ -338,63 +267,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
-
-
- //create HTML image object 
-
+//create HTML image object 
 function createImage(imageSrc) {
   var image = new Image();
   image.src = imageSrc;
   return image;
 }
-
 var skip_btns = document.querySelectorAll('.skip');
-var next_btns = document.querySelectorAll('.next');
-var back_btns = document.querySelectorAll('.back');
 skip_btns.forEach(function (skip_btn) {
   skip_btn.addEventListener('click', function () {
-    if (document.querySelector('.tutorial-1').style.display != 'none') {
-      document.querySelector('.tutorial-1').style.display = 'none';
-    } else if (document.querySelector('.tutorial-2').style.display != 'none') {
-      document.querySelector('.tutorial-2').style.display = 'none';
-    } else if (document.querySelector('.tutorial-3').style.display != 'none') {
-      document.querySelector('.tutorial-3').style.display = 'none';
-    } else {
-      document.querySelector('.tutorial-4').style.display = 'none';
+    if (document.querySelector('.tutorial').style.display != 'none') {
+      document.querySelector('.tutorial').style.display = 'none';
     }
-
-    document.getElementsByClassName('api-check')[0].style.opacity = 1;
-    document.getElementsByClassName('result-class')[0].style.opacity = 1;
     document.querySelector('canvas').style.opacity = 1;
-  });
-});
-next_btns.forEach(function (next_btn) {
-  next_btn.addEventListener('click', function () {
-    if (document.querySelector('.tutorial-1').style.display != 'none') {
-      document.querySelector('.tutorial-1').style.display = 'none';
-      document.querySelector('.tutorial-2').style.display = 'block';
-    } else if (document.querySelector('.tutorial-2').style.display != 'none') {
-      document.querySelector('.tutorial-2').style.display = 'none';
-      document.querySelector('.tutorial-3').style.display = 'block';
-    } else {
-      document.querySelector('.tutorial-3').style.display = 'none';
-      document.querySelector('.tutorial-4').style.display = 'block';
-    }
-  });
-});
-back_btns.forEach(function (back_btn) {
-  back_btn.addEventListener('click', function () {
-    if (document.querySelector('.tutorial-2').style.display != 'none') {
-      document.querySelector('.tutorial-2').style.display = 'none';
-      document.querySelector('.tutorial-1').style.animation = 'none';
-      document.querySelector('.tutorial-1').style.display = 'block';
-    } else if (document.querySelector('.tutorial-3').style.display != 'none') {
-      document.querySelector('.tutorial-3').style.display = 'none';
-      document.querySelector('.tutorial-2').style.display = 'block';
-    } else {
-      document.querySelector('.tutorial-4').style.display = 'none';
-      document.querySelector('.tutorial-3').style.display = 'block';
-    }
   });
 });
 var canvas = document.querySelector('canvas');
@@ -402,20 +287,10 @@ var c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 var gravity = 1.5;
-var finalScore = 0;
 var paused = false;
-var score = document.querySelector('.result');
-
-function updateScore() {
-  score.innerHTML = "<p style=\"line-height:2;\">Current score <br> is: ".concat(finalScore, "</p>");
-}
-
-updateScore();
-
 var Player = /*#__PURE__*/function () {
   function Player() {
     _classCallCheck(this, Player);
-
     this.position = {
       x: 100,
       y: 100
@@ -446,7 +321,6 @@ var Player = /*#__PURE__*/function () {
     this.currentSprite = this.sprites.stand.right;
     this.currentCropWidth = 170;
   }
-
   _createClass(Player, [{
     key: "draw",
     value: function draw() {
@@ -465,18 +339,14 @@ var Player = /*#__PURE__*/function () {
       if (this.position.y + this.velocity.y + this.height <= canvas.height) this.velocity.y += gravity; //acceleration due to gravity
     }
   }]);
-
   return Player;
 }();
-
 var Platform = /*#__PURE__*/function () {
   function Platform(_ref) {
     var x = _ref.x,
-        y = _ref.y,
-        image = _ref.image;
-
+      y = _ref.y,
+      image = _ref.image;
     _classCallCheck(this, Platform);
-
     this.position = {
       x: x,
       //same as x:x
@@ -486,25 +356,20 @@ var Platform = /*#__PURE__*/function () {
     this.width = image.width;
     this.height = image.height;
   }
-
   _createClass(Platform, [{
     key: "draw",
     value: function draw() {
       c.drawImage(this.image, this.position.x, this.position.y);
     }
   }]);
-
   return Platform;
 }();
-
 var GenericObjects = /*#__PURE__*/function () {
   function GenericObjects(_ref2) {
     var x = _ref2.x,
-        y = _ref2.y,
-        image = _ref2.image;
-
+      y = _ref2.y,
+      image = _ref2.image;
     _classCallCheck(this, GenericObjects);
-
     this.position = {
       x: x,
       //same as x:x
@@ -514,417 +379,22 @@ var GenericObjects = /*#__PURE__*/function () {
     this.width = image.width;
     this.height = image.height;
   }
-
   _createClass(GenericObjects, [{
     key: "draw",
     value: function draw() {
       c.drawImage(this.image, this.position.x, this.position.y);
     }
   }]);
-
   return GenericObjects;
 }();
-
-function changeOpacity() {
-  document.querySelector('canvas').style.opacity = 1;
-  document.querySelector('.timer').style.display = 'none';
-}
-
-function showTimer() {
-  document.querySelector('.timer').style.display = 'block';
-}
-
-function clearResults() {
-  document.querySelector('.api-check').innerHTML = '';
-}
-
-var Api = /*#__PURE__*/function () {
-  function Api(_ref3) {
-    var x = _ref3.x,
-        y = _ref3.y,
-        id = _ref3.id,
-        real = _ref3.real;
-
-    _classCallCheck(this, Api);
-
-    this.position = {
-      x: x,
-      y: y
-    }, this.id = id, this.real = real;
-    this.frames = 0;
-    this.frameDirection = 'right';
-    this.sprites = {
-      1: {
-        img: createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]),
-        cropWidth: 240,
-        cropHeight: 170,
-        width: 50,
-        height: 40
-      },
-      2: {
-        img: createImage(_imgs_FoodApi_png__WEBPACK_IMPORTED_MODULE_11__["default"]),
-        cropWidth: 200,
-        cropHeight: 190,
-        width: 50,
-        height: 50
-      },
-      3: {
-        img: createImage(_imgs_CurrencyApi_png__WEBPACK_IMPORTED_MODULE_12__["default"]),
-        cropWidth: 180,
-        cropHeight: 180,
-        width: 50,
-        height: 50
-      },
-      4: {
-        img: createImage(_imgs_SongApi_png__WEBPACK_IMPORTED_MODULE_13__["default"]),
-        cropWidth: 170,
-        cropHeight: 170,
-        width: 50,
-        height: 50
-      },
-      5: {
-        img: createImage(_imgs_EmailApi_png__WEBPACK_IMPORTED_MODULE_14__["default"]),
-        cropWidth: 70,
-        cropHeight: 150,
-        width: 30,
-        height: 40
-      }
-    };
-
-    if (this.id == 1) {
-      this.currentSprite = this.sprites[1].img;
-      this.currentCropWidth = this.sprites[1].cropWidth;
-      this.currentCropHeight = this.sprites[1].cropHeight;
-      this.width = this.sprites[1].width;
-      this.height = this.sprites[1].height;
-    } else if (this.id == 2) {
-      this.currentSprite = this.sprites[2].img;
-      this.currentCropWidth = this.sprites[2].cropWidth;
-      this.currentCropHeight = this.sprites[2].cropHeight;
-      this.width = this.sprites[2].width;
-      this.height = this.sprites[2].height;
-    } else if (this.id == 3) {
-      this.currentSprite = this.sprites[3].img;
-      this.currentCropWidth = this.sprites[3].cropWidth;
-      this.currentCropHeight = this.sprites[3].cropHeight;
-      this.width = this.sprites[3].width;
-      this.height = this.sprites[3].height;
-    } else if (this.id == 4) {
-      this.currentSprite = this.sprites[4].img;
-      this.currentCropWidth = this.sprites[4].cropWidth;
-      this.currentCropHeight = this.sprites[4].cropHeight;
-      this.width = this.sprites[4].width;
-      this.height = this.sprites[4].height;
-    } else {
-      this.currentSprite = this.sprites[5].img;
-      this.currentCropWidth = this.sprites[5].cropWidth;
-      this.currentCropHeight = this.sprites[5].cropHeight;
-      this.width = this.sprites[5].width;
-      this.height = this.sprites[5].height;
-    }
-  }
-
-  _createClass(Api, [{
-    key: "draw",
-    value: function draw() {
-      c.drawImage(this.currentSprite, this.currentCropWidth * this.frames, 0, this.currentCropWidth, this.currentCropHeight, this.position.x, this.position.y, this.width, this.height);
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      if (this.frames < 7 && this.frameDirection == 'right') this.frames++;else if (this.frames >= 7) this.frameDirection = 'left';
-      if (this.frames > 1 && this.frameDirection == 'left') this.frames--;else if (this.frames <= 1) this.frameDirection = 'right';
-      this.draw();
-    } //youtube api
-
-  }, {
-    key: "video",
-    value: function video() {
-      var _this = this;
-
-      var videoContainer = document.querySelector('.api-check');
-      var apiKey = 'AIzaSyBPYQHwT-_csUfoTW5VNsq48UT7_QS_bGU';
-      videoContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Youtube" API to see if it\'s real or fake.</h5>\
-        <input type="text" \
-        required placeholder="Search Video"> \
-        <button class="check">Check</button>\
-        ';
-      var btn = document.getElementsByClassName('check')[0];
-      btn.addEventListener('click', function () {
-        if (_this.real == 'true') {
-          var searchQuery = document.getElementsByTagName('input')[0].value;
-          fetch("https://www.googleapis.com/youtube/v3/search?key=".concat(apiKey, "&type=video&part=snippet&q=").concat(searchQuery)).then(function (result) {
-            if (result.ok) {
-              videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Youtube API worked successfully!!</h5>\
-                        <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
-              finalScore += 200;
-              updateScore();
-              return result.json();
-            } else {
-              console.log('Unsuccessful api call');
-            }
-          }).then(function (data) {
-            console.log(data);
-            var videos = data.items;
-
-            for (var i = 0; i < 3; i++) {
-              videoContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">".concat(videos[i].snippet.title, "</p>");
-            }
-          })["catch"](function (err) {
-            videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
-                    Since the API was real, hence the score would be increased.</h5>';
-            finalScore += 200;
-            updateScore();
-          });
-        } else {
-          videoContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
-          finalScore -= 200;
-          updateScore();
-        }
-
-        paused = false;
-        document.querySelector('.wait').style.display = 'none';
-        showTimer();
-        setTimeout(animate, 5000);
-        setTimeout(changeOpacity, 5000);
-        setTimeout(clearResults, 5000);
-      });
-    } //currencyExchange api
-
-  }, {
-    key: "currency",
-    value: function currency() {
-      var _this2 = this;
-
-      var currContainer = document.querySelector('.api-check');
-      currContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "CurrencyExchange" API to see if it\'s real or fake.</h5>\
-        <input type="text" \
-        required class="from" placeholder="From (eg: USD)"> \
-        <input type="text" \
-        required class="to" placeholder="To (eg: INR)"> \
-        <input type="text" \
-        required class="amt" placeholder="Enter Amount"> \
-        <button class="check">Check</button>\
-        ';
-      var options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
-          'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
-        }
-      };
-      var btn = document.getElementsByClassName('check')[0];
-      btn.addEventListener('click', function () {
-        if (_this2.real == 'true') {
-          var from = document.querySelector('.from').value;
-          var to = document.querySelector('.to').value;
-          var amt = document.querySelector('.amt').value;
-          fetch("https://currency-exchange.p.rapidapi.com/exchange?from=".concat(from, "&to=").concat(to, "&q=").concat(amt), options).then(function (response) {
-            return response.json();
-          }).then(function (response) {
-            var conversion = response;
-            currContainer.innerHTML = "<h5 style=\"text-align:center;line-height:2;color:green;\">CurrencyExchange API worked successfully!!</h5>                    <p style=\"text-align:center;font-size:9px;font-style:italic;font-weight:lighter;\">Below result is fetched with API.</p>                    <p style=\"text-align:center;font-size:12px;\">".concat(amt, " ").concat(from, " is equivalent to ").concat(conversion, " ").concat(to, ".</p>");
-            finalScore += 100;
-            updateScore();
-          })["catch"](function (err) {
-            currContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
-                    Since the API was real, hence the score would be increased.</h5>';
-            finalScore += 100;
-            updateScore();
-          });
-        } else {
-          currContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
-          finalScore -= 100;
-          updateScore();
-        }
-
-        paused = false;
-        document.querySelector('.wait').style.display = 'none';
-        showTimer();
-        setTimeout(animate, 5000);
-        setTimeout(changeOpacity, 5000);
-        setTimeout(clearResults, 5000);
-      });
-    } //deezer songs api
-
-  }, {
-    key: "song",
-    value: function song() {
-      var _this3 = this;
-
-      var songContainer = document.querySelector('.api-check');
-      songContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Deezer" API to see if it\'s real or fake.</h5>\
-        <input type="text" \
-        required placeholder="Search song/artist/album"> \
-        <button class="check">Check</button>\
-        ';
-      var btn = document.getElementsByClassName('check')[0];
-      btn.addEventListener('click', function () {
-        if (_this3.real == 'true') {
-          var searchQuery = document.getElementsByTagName('input')[0].value;
-          var options = {
-            method: 'GET',
-            headers: {
-              'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
-              'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-            }
-          };
-          fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=".concat(searchQuery), options).then(function (response) {
-            return response.json();
-          }).then(function (response) {
-            songContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Deezer API worked successfully!!</h5>\
-                        <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
-            var songs = response.data;
-            console.log(songs);
-
-            for (var i = 0; i < 3; i++) {
-              songContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">".concat(songs[i].album.title, " sung by ").concat(songs[i].artist.name, "</p>");
-            }
-
-            finalScore += 300;
-            updateScore();
-          })["catch"](function (err) {
-            songContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
-                        Since the API was real, hence the score would be increased.</h5>';
-            finalScore += 300;
-            updateScore();
-          });
-        } else {
-          songContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
-          finalScore -= 300;
-          updateScore();
-        }
-
-        paused = false;
-        document.querySelector('.wait').style.display = 'none';
-        showTimer();
-        setTimeout(animate, 5000);
-        setTimeout(changeOpacity, 5000);
-        setTimeout(clearResults, 5000);
-      });
-    } //edamam food api
-
-  }, {
-    key: "food",
-    value: function food() {
-      var _this4 = this;
-
-      var foodContainer = document.querySelector('.api-check');
-      foodContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Edamam Food and Grocery Database" API to see if it\'s real or fake.</h5>\
-        <input type="text" \
-        required placeholder="Search food"> \
-        <button class="check">Check</button>\
-        ';
-      var btn = document.getElementsByClassName('check')[0];
-      btn.addEventListener('click', function () {
-        if (_this4.real == 'true') {
-          var searchQuery = document.getElementsByTagName('input')[0].value;
-          var options = {
-            method: 'GET',
-            headers: {
-              'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
-              'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
-            }
-          };
-          fetch("https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=".concat(searchQuery), options).then(function (response) {
-            return response.json();
-          }).then(function (response) {
-            foodContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Edamam API worked successfully!!</h5>\
-                        <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below are some results fetched with API.</p>';
-            var foods = response.hints;
-
-            for (var i = 0; i < 3; i++) {
-              foodContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">".concat(foods[i].food.label, " (").concat(foods[i].food.nutrients.ENERC_KCAL, " KCAL)</p>");
-            }
-
-            finalScore += 400;
-            updateScore();
-          })["catch"](function (err) {
-            foodContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
-                    Since the API was real, hence the score would be increased. </h5>';
-            finalScore += 400;
-            updateScore();
-          });
-        } else {
-          foodContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
-          finalScore -= 400;
-          updateScore();
-        }
-
-        paused = false;
-        document.querySelector('.wait').style.display = 'none';
-        showTimer();
-        setTimeout(animate, 5000);
-        setTimeout(changeOpacity, 5000);
-        setTimeout(clearResults, 5000);
-      });
-    } //email verifier
-
-  }, {
-    key: "email",
-    value: function email() {
-      var _this5 = this;
-
-      var mailContainer = document.querySelector('.api-check');
-      mailContainer.innerHTML = '<h5 style="text-align:center;line-height:1.5;">Query the "Email verifier" API to see if it\'s real or fake.</h5>\
-        <input type="text" \
-        required placeholder="Enter email"> \
-        <button class="check">Check</button>\
-        ';
-      var btn = document.getElementsByClassName('check')[0];
-      btn.addEventListener('click', function () {
-        if (_this5.real == 'true') {
-          var searchQuery = document.getElementsByTagName('input')[0].value;
-          var options = {
-            method: 'GET',
-            headers: {
-              'X-RapidAPI-Key': 'e082dc2589mshb5504557b8fe7b3p173647jsna5744a0ae868',
-              'X-RapidAPI-Host': 'email-verifier-completely-free.p.rapidapi.com'
-            }
-          };
-          fetch("https://email-verifier-completely-free.p.rapidapi.com/email-verification/".concat(searchQuery), options).then(function (response) {
-            return response.json();
-          }).then(function (response) {
-            mailContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:green;">Email Verifier API worked successfully!!</h5>\
-                    <p style="text-align:center;font-size:9px;font-style:italic;font-weight:lighter;">Below result is fetched with API.</p>';
-            mailContainer.innerHTML += "<p style=\"text-align:center;font-size:12px;\">Format: ".concat(response.response.format, ", Professional: ").concat(response.response.professional, "</p>");
-            finalScore += 50;
-            updateScore();
-          })["catch"](function (err) {
-            mailContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Seems that API calls are exhausted! But don\'t worry!\
-                    Since the API was real, hence the score would be increased. </h5>';
-            finalScore += 50;
-            updateScore();
-          });
-        } else {
-          mailContainer.innerHTML = '<h5 style="text-align:center;line-height:2;color:red;">Aww Snap! It was a fake!!</h5>';
-          finalScore -= 50;
-          updateScore();
-        }
-
-        paused = false;
-        document.querySelector('.wait').style.display = 'none';
-        showTimer();
-        setTimeout(animate, 5000);
-        setTimeout(changeOpacity, 5000);
-        setTimeout(clearResults, 5000);
-      });
-    }
-  }]);
-
-  return Api;
-}();
-
 var Bug = /*#__PURE__*/function () {
-  function Bug(_ref4) {
-    var x = _ref4.x,
-        y = _ref4.y,
-        speed = _ref4.speed,
-        distance = _ref4.distance,
-        direction = _ref4.direction;
-
+  function Bug(_ref3) {
+    var x = _ref3.x,
+      y = _ref3.y,
+      speed = _ref3.speed,
+      distance = _ref3.distance,
+      direction = _ref3.direction;
     _classCallCheck(this, Bug);
-
     this.position = {
       x: x,
       y: y
@@ -937,14 +407,12 @@ var Bug = /*#__PURE__*/function () {
       right: createImage(_imgs_BugRight_png__WEBPACK_IMPORTED_MODULE_8__["default"]),
       left: createImage(_imgs_BugLeft_png__WEBPACK_IMPORTED_MODULE_9__["default"])
     };
-
     if (direction == 'right') {
       this.currentSprite = this.sprites.right;
     } else {
       this.currentSprite = this.sprites.left;
     }
   }
-
   _createClass(Bug, [{
     key: "draw",
     value: function draw() {
@@ -954,7 +422,6 @@ var Bug = /*#__PURE__*/function () {
     key: "move",
     value: function move() {
       this.draw();
-
       if (this.covered < this.distance && this.currentSprite == this.sprites.right) {
         this.position.x += this.speed;
         this.covered += this.speed;
@@ -970,19 +437,14 @@ var Bug = /*#__PURE__*/function () {
       }
     }
   }]);
-
   return Bug;
 }();
-
 var scrollOffset = 0; //for finding the winning point
-
 var player = new Player();
 var platformImage = createImage(_imgs_platform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var platformSmallTallImage = createImage(_imgs_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var bgImage = createImage(_imgs_bg_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var objectImage = createImage(_imgs_objects_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var ytbImage = createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
-var flagImage = createImage(_imgs_flag_png__WEBPACK_IMPORTED_MODULE_15__["default"]);
 var platforms = [];
 var genericObjects = [];
 var apis = [];
@@ -996,22 +458,14 @@ var keys = {
     pressed: false
   }
 };
-var bool = ['true', 'false']; //real or fake api
-
 function init() {
   document.querySelector('.restart').style.display = 'none';
   scrollOffset = 0; //for finding the winning point
-
   player = new Player();
-  finalScore = 0;
-  updateScore();
-  document.querySelector('.api-check').innerHTML = '';
   platformImage = createImage(_imgs_platform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
   platformSmallTallImage = createImage(_imgs_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
   bgImage = createImage(_imgs_bg_png__WEBPACK_IMPORTED_MODULE_2__["default"]);
   objectImage = createImage(_imgs_objects_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
-  ytbImage = createImage(_imgs_YoutubeApi_png__WEBPACK_IMPORTED_MODULE_10__["default"]);
-  flagImage = createImage(_imgs_flag_png__WEBPACK_IMPORTED_MODULE_15__["default"]);
   platforms = [new Platform({
     x: 0,
     y: 487,
@@ -1142,72 +596,6 @@ function init() {
     y: 180,
     image: objectImage
   })];
-  apis = [new Api({
-    x: 7 * platformImage.width + 200,
-    y: 100,
-    id: 1,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 15 * platformImage.width + 1200 + 200,
-    y: 150,
-    id: 3,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 19 * platformImage.width + 1400 + 200,
-    y: 150,
-    id: 1,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 9 * platformImage.width + 200 + 200,
-    y: 100,
-    id: 5,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 19 * platformImage.width + 1400,
-    y: 375,
-    id: 4,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 22 * platformImage.width + 1400 + 200,
-    y: 437,
-    id: 2,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 2 * platformImage.width,
-    y: 150,
-    id: 1,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 6 * platformImage.width,
-    y: 300,
-    id: 2,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 11 * platformImage.width + 200 + 200,
-    y: 437,
-    id: 4,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 17 * platformImage.width + 1300 + 200,
-    y: 437,
-    id: 1,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 13 * platformImage.width + 800 + 200,
-    y: 100,
-    id: 2,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 4 * platformImage.width + 200,
-    y: 100,
-    id: 2,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  }), new Api({
-    x: 14 * platformImage.width + 1000 + 100,
-    y: 250,
-    id: 5,
-    real: bool[Math.floor(Math.random() * bool.length)]
-  })];
   bugs = [new Bug({
     x: 3 * platformImage.width,
     y: 437,
@@ -1252,12 +640,10 @@ function init() {
     direction: 'left'
   })];
 }
-
 function animate() {
   if (paused == false) {
     requestAnimationFrame(animate);
   }
-
   c.fillStyle = 'white';
   c.fillRect(0, 0, canvas.width, canvas.height);
   genericObjects.forEach(function (obj) {
@@ -1273,15 +659,14 @@ function animate() {
     bug.move();
   });
   player.update();
-
   if (keys.right.pressed && player.position.x < 400) {
     player.velocity.x = player.speed;
   } else if (keys.left.pressed && player.position.x > 100 || keys.left.pressed && player.position.x > 0) {
     player.velocity.x = -player.speed;
   } else {
     player.velocity.x = 0;
-
-    if (keys.right.pressed && scrollOffset + 400 < 23 * platformImage.width + 1800 + 200) //orginally player covered some distanc of 400px
+    if (keys.right.pressed && scrollOffset + 400 < 23 * platformImage.width + 1800 + 200)
+      //orginally player covered some distanc of 400px
       {
         scrollOffset += player.speed;
         platforms.forEach(function (platform) {
@@ -1290,6 +675,7 @@ function animate() {
         genericObjects.forEach(function (obj) {
           obj.position.x -= player.speed * 0.66; //parallax effect
         });
+
         apis.forEach(function (api) {
           api.position.x -= player.speed;
         });
@@ -1304,6 +690,7 @@ function animate() {
       genericObjects.forEach(function (obj) {
         obj.position.x += player.speed * 0.66; //parallax effect
       });
+
       apis.forEach(function (api) {
         api.position.x += player.speed;
       });
@@ -1311,9 +698,9 @@ function animate() {
         bug.position.x += player.speed;
       });
     }
-  } //sprite switching
+  }
 
-
+  //sprite switching
   if (keys.right.pressed && lastKey === 'right' && player.currentSprite !== player.sprites.run.right) {
     player.currentSprite = player.sprites.run.right;
     player.currentCropWidth = player.sprites.run.cropWidth;
@@ -1330,69 +717,46 @@ function animate() {
     player.currentSprite = player.sprites.stand.left;
     player.currentCropWidth = player.sprites.stand.cropWidth;
     player.width = player.sprites.stand.width;
-  } //win condition
+  }
 
-
+  //win condition
   if (scrollOffset + 400 >= 23 * platformImage.width + 1800) {
-    document.querySelector('.result').innerHTML = "<p style=\"line-height:2;font-weight:bold;\">FINAL SCORE: ".concat(finalScore, "</p>");
     document.querySelector('.restart').style.display = 'block';
     document.querySelector('.restart-button').addEventListener('click', function () {
       init();
     });
-  } //lose condition
+  }
 
-
+  //lose condition
   if (player.position.y > canvas.height) {
     init(); //start again
-  } //platform collision detection
+  }
 
-
+  //platform collision detection
   platforms.forEach(function (platform) {
     if (player.position.y + player.height <= platform.position.y && player.position.y + player.height + player.velocity.y >= platform.position.y && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x + platform.width) {
       player.velocity.y = 0;
     }
-  }); //api collision
+  });
 
-  for (var i = 0; i < apis.length; i++) {
-    if (player.position.y + player.velocity.y >= apis[i].position.y && player.position.y + player.velocity.y <= apis[i].position.y + apis[i].height && player.position.x + player.width >= apis[i].position.x && player.position.x <= apis[i].position.x + apis[i].width || player.position.y + player.height + player.velocity.y >= apis[i].position.y && player.position.y + player.velocity.y <= apis[i].position.y + apis[i].height && player.position.x + player.width >= apis[i].position.x && player.position.x <= apis[i].position.x + apis[i].width) {
-      paused = true;
-      document.querySelector('canvas').style.opacity = 0.5;
-      document.querySelector('.wait').style.display = 'block';
-
-      if (apis[i].id == 1) {
-        apis[i].video();
-      } else if (apis[i].id == 2) {
-        apis[i].food();
-      } else if (apis[i].id == 3) {
-        apis[i].currency();
-      } else if (apis[i].id == 4) {
-        apis[i].song();
-      } else {
-        apis[i].email();
-      }
-
-      apis.splice(i, 1);
+  //bug collision
+  for (var i = 0; i < bugs.length; i++) {
+    if (player.position.y + player.height <= bugs[i].position.y && player.position.y + player.height + player.velocity.y >= bugs[i].position.y && player.position.x + player.width >= bugs[i].position.x && player.position.x <= bugs[i].position.x + bugs[i].width) {
+      bugs.splice(i, 1); //kills bug
     }
-  } //bug collision
 
-
-  for (var _i = 0; _i < bugs.length; _i++) {
-    if (player.position.y + player.height <= bugs[_i].position.y && player.position.y + player.height + player.velocity.y >= bugs[_i].position.y && player.position.x + player.width >= bugs[_i].position.x && player.position.x <= bugs[_i].position.x + bugs[_i].width) {
-      bugs.splice(_i, 1); //kills bug
-    } // if(player.position.x + player.width == bugs[i].position.x
+    // if(player.position.x + player.width == bugs[i].position.x
     // || player.position.x  == bugs[i].position.x + bugs[i].width)
     // {
     //     init()
     // }
-
   }
 }
 
 init();
 animate();
-addEventListener('keydown', function (_ref5) {
-  var keyCode = _ref5.keyCode;
-
+addEventListener('keydown', function (_ref4) {
+  var keyCode = _ref4.keyCode;
   switch (keyCode) {
     case 65:
       {
@@ -1402,7 +766,6 @@ addEventListener('keydown', function (_ref5) {
         lastKey = 'left';
         break;
       }
-
     case 68:
       {
         //key d
@@ -1411,14 +774,12 @@ addEventListener('keydown', function (_ref5) {
         lastKey = 'right';
         break;
       }
-
     case 83:
       {
         //key s
         console.log('down');
         break;
       }
-
     case 87:
       {
         //key w
@@ -1426,7 +787,6 @@ addEventListener('keydown', function (_ref5) {
         player.velocity.y -= 20;
         break;
       }
-
     case 37:
       {
         //key leftarrow
@@ -1435,7 +795,6 @@ addEventListener('keydown', function (_ref5) {
         lastKey = 'left';
         break;
       }
-
     case 39:
       {
         //key rightarrow
@@ -1444,14 +803,12 @@ addEventListener('keydown', function (_ref5) {
         lastKey = 'right';
         break;
       }
-
     case 40:
       {
         //key downarrow
         console.log('down');
         break;
       }
-
     case 38:
       {
         //key uparrow
@@ -1461,9 +818,8 @@ addEventListener('keydown', function (_ref5) {
       }
   }
 });
-addEventListener('keyup', function (_ref6) {
-  var keyCode = _ref6.keyCode;
-
+addEventListener('keyup', function (_ref5) {
+  var keyCode = _ref5.keyCode;
   switch (keyCode) {
     case 65:
       {
@@ -1472,7 +828,6 @@ addEventListener('keyup', function (_ref6) {
         keys.left.pressed = false;
         break;
       }
-
     case 68:
       {
         //key d
@@ -1480,7 +835,6 @@ addEventListener('keyup', function (_ref6) {
         keys.right.pressed = false;
         break;
       }
-
     case 37:
       {
         //key leftarrow
@@ -1488,10 +842,10 @@ addEventListener('keyup', function (_ref6) {
         keys.left.pressed = false;
         break;
       }
-
     case 39:
       {
         //key rightarrow
+
         console.log('right');
         keys.right.pressed = false;
         break;
