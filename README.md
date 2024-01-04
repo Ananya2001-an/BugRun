@@ -9,7 +9,11 @@ Can use hand gestures to control the game! Run the `main.py` file in `hand-track
 
 ## Demo
 
-https://github.com/Ananya2001-an/Rainbow/assets/55504616/d78390fc-b1d6-4fef-b04a-9be7fd26efe2
+
+
+https://github.com/Ananya2001-an/BugRun/assets/55504616/f7d9cb06-92b8-418d-bfc1-5f6058f51330
+
+
 
 ## Getting Started
 
